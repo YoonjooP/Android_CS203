@@ -28,7 +28,7 @@ public class View {
         }
         c.drawColor(Color.GREEN);
         c.drawBitmap(duck, 0, 0, null);
-        //somechanges
+        //somechanges123
     }
 
 }
