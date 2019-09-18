@@ -34,9 +34,14 @@ public class GameView extends View {
         water = BitmapFactory.decodeResource(getResources(), R.drawable.water);
     }
         @Override
+        /**
+         * drawing pictures
+         */
         public void onDraw (Canvas c){
+        // screen size
             float w = c.getWidth();
             float h = c.getHeight();
+
             float watersize = w * 0.02f;
             if (init == false) {
                 float shipsizew = w * 0.45f;
@@ -78,6 +83,7 @@ public class GameView extends View {
             for (float x = 0.0f; x < w; x += watersize) {
                 c.drawBitmap(water, x, h/2, null);
             }
+            /* relative positions*/
             float shipPosX = w/2 - battleship.getWidth()/2;
             float shipPosY = h/2 - battleship.getHeight()+watersize;
             c.drawBitmap(battleship, shipPosX, shipPosY, null);
