@@ -37,6 +37,7 @@ public class GameView extends View {
         public void onDraw (Canvas c){
             float w = c.getWidth();
             float h = c.getHeight();
+            float watersize = w * 0.05f;
             if (init == false) {
                 float shipsize = w * 0.2f;
                 battleship = Bitmap.createScaledBitmap(battleship,
@@ -59,14 +60,17 @@ public class GameView extends View {
                 float medSubsize = w * 0.15f;
                 medSub = Bitmap.createScaledBitmap(medSub,
                         (int) medSubsize, (int) medSubsize, true);
-                float watersize = w * 0.05f;
+
                 water = Bitmap.createScaledBitmap(water,
                         (int) watersize, (int) watersize, true);
 
                 init = true;
             }
             c.drawColor(Color.WHITE);
-            c.drawBitmap(water, 0, 0, null);
+
+            for (float x = 0.0f; x < w; x += watersize) {
+                c.drawBitmap(water, x, h/2, null);
+            }
             float shipPosX = w/2 - battleship.getWidth()/2;
             float shipPosY = h/2 - battleship.getHeight()/2;
             c.drawBitmap(battleship, shipPosX, shipPosY, null);
