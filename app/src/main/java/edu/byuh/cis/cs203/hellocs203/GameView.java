@@ -82,9 +82,12 @@ public class GameView extends View {
             float bsPosX = 2 * w/5;
             float bsPosY = 2 * h/3;
             c.drawBitmap(bigSub, bsPosX, bsPosY, null);
-            c.drawBitmap(litAir, 60, 30, null);
-            float lsPosY = 3 * h/5;
-            c.drawBitmap(litSub, 80, lsPosY, null);
+            float laPosX = w/10;
+            float laPosY = h/10;
+            c.drawBitmap(litAir, laPosX, laPosY, null);
+            float lsPosX = w/4;
+            float lsPosY = 2 * h/3;
+            c.drawBitmap(litSub, lsPosX, lsPosY, null);
             float maPosX = 2 * w/3;
             c.drawBitmap(medAir, maPosX, 60, null);
             float msPosX = w/2;
