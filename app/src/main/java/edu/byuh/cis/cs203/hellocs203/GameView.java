@@ -66,7 +66,9 @@ public class GameView extends View {
                 init = true;
             }
             c.drawColor(Color.GREEN);
-            c.drawBitmap(battleship, 0, 0, null);
+            float shipPosX = w/2 - battleship.getWidth()/2;
+            float shipPosY = h/2 - battleship.getHeight()/2;
+            c.drawBitmap(battleship, shipPosX, shipPosY, null);
             c.drawBitmap(bigAir, 0, 0, null);
             c.drawBitmap(bigSub, 0, 0, null);
             c.drawBitmap(litAir, 0, 0, null);
