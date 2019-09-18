@@ -43,9 +43,10 @@ public class GameView extends View {
                 float shipsizeh = h * 0.15f;
                 battleship = Bitmap.createScaledBitmap(battleship,
                         (int) shipsizew, (int) shipsizeh, true);
-                float bigAirsize = w * 0.2f;
+                float bigAirsizew = w * 0.15f;
+                float bigAirsizeh = h * 0.1f;
                 bigAir = Bitmap.createScaledBitmap(bigAir,
-                        (int) bigAirsize, (int) bigAirsize, true);
+                        (int) bigAirsizew, (int) bigAirsizeh, true);
                 float bigSubsize = w * 0.2f;
                 bigSub = Bitmap.createScaledBitmap(bigSub,
                         (int) bigSubsize, (int) bigSubsize, true);
@@ -78,8 +79,9 @@ public class GameView extends View {
             float shipPosX = w/2 - battleship.getWidth()/2;
             float shipPosY = h/2 - battleship.getHeight()+watersize;
             c.drawBitmap(battleship, shipPosX, shipPosY, null);
-            float baPosX = 3 * w/4;
-            c.drawBitmap(bigAir, baPosX, 20, null);
+            float baPosX = 3 * w/5;
+            float baPosY = h/13;
+            c.drawBitmap(bigAir, baPosX, baPosY, null);
             float bsPosX = 2 * w/5;
             float bsPosY = 2 * h/3;
             c.drawBitmap(bigSub, bsPosX, bsPosY, null);
