@@ -49,12 +49,14 @@ public class GameView extends View {
                 float bigSubsize = w * 0.2f;
                 bigSub = Bitmap.createScaledBitmap(bigSub,
                         (int) bigSubsize, (int) bigSubsize, true);
-                float litAirsize = w * 0.1f;
+                float litAirsizew = w * 0.04f;
+                float litAirsizeh = h * 0.08f;
                 litAir = Bitmap.createScaledBitmap(litAir,
-                        (int) litAirsize, (int) litAirsize, true);
-                float litSubsize = w * 0.1f;
+                        (int) litAirsizew, (int) litAirsizeh, true);
+                float litSubsizew = w * 0.04f;
+                float litSubsizeh = h * 0.06f;
                 litSub = Bitmap.createScaledBitmap(litSub,
-                        (int) litSubsize, (int) litSubsize, true);
+                        (int) litSubsizew, (int) litSubsizeh, true);
                 float medAirsize = w * 0.15f;
                 medAir = Bitmap.createScaledBitmap(medAir,
                         (int) medAirsize, (int) medAirsize, true);
