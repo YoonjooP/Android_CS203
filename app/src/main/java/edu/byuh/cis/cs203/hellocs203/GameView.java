@@ -47,9 +47,10 @@ public class GameView extends View {
                 float bigAirsizeh = h * 0.1f;
                 bigAir = Bitmap.createScaledBitmap(bigAir,
                         (int) bigAirsizew, (int) bigAirsizeh, true);
-                float bigSubsize = w * 0.2f;
+                float bigSubsizew = w * 0.12f;
+                float bigSubsizeh = h * 0.1f;
                 bigSub = Bitmap.createScaledBitmap(bigSub,
-                        (int) bigSubsize, (int) bigSubsize, true);
+                        (int) bigSubsizew, (int) bigSubsizeh, true);
                 float litAirsizew = w * 0.04f;
                 float litAirsizeh = h * 0.08f;
                 litAir = Bitmap.createScaledBitmap(litAir,
@@ -62,9 +63,10 @@ public class GameView extends View {
                 float medAirsizeh = h * 0.1f;
                 medAir = Bitmap.createScaledBitmap(medAir,
                         (int) medAirsizew, (int) medAirsizeh, true);
-                float medSubsize = w * 0.15f;
+                float medSubsizew = w * 0.08f;
+                float medSubsizeh = h * 0.07f;
                 medSub = Bitmap.createScaledBitmap(medSub,
-                        (int) medSubsize, (int) medSubsize, true);
+                        (int) medSubsizew, (int) medSubsizeh, true);
 
                 water = Bitmap.createScaledBitmap(water,
                         (int) watersize, (int) watersize, true);
@@ -95,7 +97,7 @@ public class GameView extends View {
             float maPosY = h/5;
             c.drawBitmap(medAir, maPosX, maPosY, null);
             float msPosX = w/2;
-            float msPosY = h - 60;
+            float msPosY = 9 * h/11;
             c.drawBitmap(medSub, msPosX, msPosY, null);
         }
 
