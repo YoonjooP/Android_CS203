@@ -65,17 +65,24 @@ public class GameView extends View {
 
                 init = true;
             }
-            c.drawColor(Color.GREEN);
+            c.drawColor(Color.WHITE);
+            c.drawBitmap(water, 0, 0, null);
             float shipPosX = w/2 - battleship.getWidth()/2;
             float shipPosY = h/2 - battleship.getHeight()/2;
             c.drawBitmap(battleship, shipPosX, shipPosY, null);
-            c.drawBitmap(bigAir, 0, 0, null);
-            c.drawBitmap(bigSub, 0, 0, null);
-            c.drawBitmap(litAir, 0, 0, null);
-            c.drawBitmap(litSub, 0, 0, null);
-            c.drawBitmap(medAir, 0, 0, null);
-            c.drawBitmap(medSub, 0, 0, null);
-            c.drawBitmap(water, 0, 0, null);
+            float baPosX = 3 * w/4;
+            c.drawBitmap(bigAir, baPosX, 20, null);
+            float bsPosX = 2 * w/5;
+            float bsPosY = 2 * h/3;
+            c.drawBitmap(bigSub, bsPosX, bsPosY, null);
+            c.drawBitmap(litAir, 60, 30, null);
+            float lsPosY = 3 * h/5;
+            c.drawBitmap(litSub, 80, lsPosY, null);
+            float maPosX = 2 * w/3;
+            c.drawBitmap(medAir, maPosX, 60, null);
+            float msPosX = w/2;
+            float msPosY = h - 60;
+            c.drawBitmap(medSub, msPosX, msPosY, null);
         }
 
 }
