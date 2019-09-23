@@ -1,4 +1,4 @@
-package edu.byuh.cis.cs203.hellocs203;
+package edu.byuh.cis.cs203.hellocs203.sys;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -6,6 +6,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.view.View;
+
+import edu.byuh.cis.cs203.hellocs203.R;
 
 public class GameView extends View {
 

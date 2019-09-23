@@ -1,4 +1,4 @@
-package edu.byuh.cis.cs203.hellocs203;
+package edu.byuh.cis.cs203.hellocs203.sys;
 
 import android.app.Activity;
 import android.os.Bundle;
