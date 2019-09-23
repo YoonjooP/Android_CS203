@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.View;
 
 import edu.byuh.cis.cs203.hellocs203.R;
@@ -34,6 +35,7 @@ public class GameView extends View {
         medAir = BitmapFactory.decodeResource(getResources(), R.drawable.medium_airplane);
         medSub = BitmapFactory.decodeResource(getResources(), R.drawable.medium_submarine);
         water = BitmapFactory.decodeResource(getResources(), R.drawable.water);
+        Log.d("CS203", "Just Finished constructor")
     }
         @Override
         /**
