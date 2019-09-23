@@ -35,7 +35,7 @@ public class GameView extends View {
         medAir = BitmapFactory.decodeResource(getResources(), R.drawable.medium_airplane);
         medSub = BitmapFactory.decodeResource(getResources(), R.drawable.medium_submarine);
         water = BitmapFactory.decodeResource(getResources(), R.drawable.water);
-        Log.d("CS203", "Just Finished constructor")
+        Timer tim = new Timer();
     }
         @Override
         /**
