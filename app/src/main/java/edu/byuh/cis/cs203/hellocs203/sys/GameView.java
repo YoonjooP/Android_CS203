@@ -69,7 +69,7 @@ public class GameView extends View {
                 c.drawBitmap(water, x, h/2, null);
             }
             /* relative positions*/
-            battleship.setPosition(w/2, h/2);
+            battleship.setPosition(w/2, h/2-watersize);
             bigAir.setPosition(3 * w/5, h/13);
             bigSub.setPosition(2 * w/5, 2 * h/3);
             litAir.setPosition(w/10, h/10);

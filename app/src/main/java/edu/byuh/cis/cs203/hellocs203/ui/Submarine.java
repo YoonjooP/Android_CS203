@@ -25,8 +25,8 @@ public class Submarine extends Enemy {
     @Override
     protected float relativeWidth() {
         switch (size) {
-            case BIG: return 0.2f;
-            case MEDIUM: return 0.15f;
+            case BIG: return 0.1f;
+            case MEDIUM: return 0.083f;
             default: return 0.05f;
         }
     }

@@ -13,6 +13,6 @@ public class Battleship extends Sprite {
 
     @Override
     protected float relativeWidth() {
-        return 0.45f;
+        return 0.4f;
     }
 }

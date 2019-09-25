@@ -25,9 +25,9 @@ public class Airplane extends Enemy {
     protected float relativeWidth() {
         switch (size) {
             case BIG:
-                return 0.2f;
+                return 0.1f;
             case MEDIUM:
-                return 0.10f;
+                return 0.083f;
             default:
                 return 0.05f;
         }
