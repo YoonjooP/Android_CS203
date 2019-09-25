@@ -9,17 +9,20 @@ import android.util.Log;
 import android.view.View;
 
 import edu.byuh.cis.cs203.hellocs203.R;
+import edu.byuh.cis.cs203.hellocs203.ui.Airplane;
+import edu.byuh.cis.cs203.hellocs203.ui.Battleship;
+import edu.byuh.cis.cs203.hellocs203.ui.Submarine;
 
 public class GameView extends View {
 
 
-    private Bitmap battleship;
-    private Bitmap bigAir;
-    private Bitmap bigSub;
-    private Bitmap litAir;
-    private Bitmap litSub;
-    private Bitmap medAir;
-    private Bitmap medSub;
+    private Battleship battleship;
+    private Airplane bigAir;
+    private Submarine bigSub;
+    private Airplane litAir;
+    private Submarine litSub;
+    private Airplane medAir;
+    private Submarine medSub;
     private Bitmap water;
 
     private boolean init;
@@ -27,15 +30,15 @@ public class GameView extends View {
     public GameView (Context c) {
         super(c);
         init = false;
-        battleship = BitmapFactory.decodeResource(getResources(), R.drawable.battleship);
-        bigAir = BitmapFactory.decodeResource(getResources(), R.drawable.big_airplane);
-        bigSub = BitmapFactory.decodeResource(getResources(), R.drawable.big_submarine);
-        litAir = BitmapFactory.decodeResource(getResources(), R.drawable.little_airplane);
-        litSub = BitmapFactory.decodeResource(getResources(), R.drawable.little_submarine);
-        medAir = BitmapFactory.decodeResource(getResources(), R.drawable.medium_airplane);
-        medSub = BitmapFactory.decodeResource(getResources(), R.drawable.medium_submarine);
+        battleship = new Battleship(getResources());
+        bigAir = new Airplane(getResources());
+        bigSub = new Submarine(getResources());
+        litAir = new Airplane(getResources());
+        litSub = new Submarine(getResources());
+        medAir = new Airplane(getResources());
+        medSub = new Submarine(getResources());
         water = BitmapFactory.decodeResource(getResources(), R.drawable.water);
-        Timer tim = new Timer();
+        //Timer tim = new Timer();
     }
         @Override
         /**
@@ -48,35 +51,13 @@ public class GameView extends View {
 
             float watersize = w * 0.02f;
             if (init == false) {
-                float shipsizew = w * 0.45f;
-                float shipsizeh = h * 0.15f;
-                battleship = Bitmap.createScaledBitmap(battleship,
-                        (int) shipsizew, (int) shipsizeh, true);
-                float bigAirsizew = w * 0.15f;
-                float bigAirsizeh = h * 0.1f;
-                bigAir = Bitmap.createScaledBitmap(bigAir,
-                        (int) bigAirsizew, (int) bigAirsizeh, true);
-                float bigSubsizew = w * 0.12f;
-                float bigSubsizeh = h * 0.1f;
-                bigSub = Bitmap.createScaledBitmap(bigSub,
-                        (int) bigSubsizew, (int) bigSubsizeh, true);
-                float litAirsizew = w * 0.04f;
-                float litAirsizeh = h * 0.08f;
-                litAir = Bitmap.createScaledBitmap(litAir,
-                        (int) litAirsizew, (int) litAirsizeh, true);
-                float litSubsizew = w * 0.04f;
-                float litSubsizeh = h * 0.06f;
-                litSub = Bitmap.createScaledBitmap(litSub,
-                        (int) litSubsizew, (int) litSubsizeh, true);
-                float medAirsizew = w * 0.1f;
-                float medAirsizeh = h * 0.1f;
-                medAir = Bitmap.createScaledBitmap(medAir,
-                        (int) medAirsizew, (int) medAirsizeh, true);
-                float medSubsizew = w * 0.08f;
-                float medSubsizeh = h * 0.07f;
-                medSub = Bitmap.createScaledBitmap(medSub,
-                        (int) medSubsizew, (int) medSubsizeh, true);
-
+                battleship.scale(w);
+                bigAir.scale(w);
+                litAir.scale(w);
+                medAir.scale(w);
+                bigSub.scale(w);
+                litSub.scale(w);
+                medAir.scale(w);
                 water = Bitmap.createScaledBitmap(water,
                         (int) watersize, (int) watersize, true);
 
@@ -88,27 +69,22 @@ public class GameView extends View {
                 c.drawBitmap(water, x, h/2, null);
             }
             /* relative positions*/
-            float shipPosX = w/2 - battleship.getWidth()/2;
-            float shipPosY = h/2 - battleship.getHeight()+watersize;
-            c.drawBitmap(battleship, shipPosX, shipPosY, null);
-            float baPosX = 3 * w/5;
-            float baPosY = h/13;
-            c.drawBitmap(bigAir, baPosX, baPosY, null);
-            float bsPosX = 2 * w/5;
-            float bsPosY = 2 * h/3;
-            c.drawBitmap(bigSub, bsPosX, bsPosY, null);
-            float laPosX = w/10;
-            float laPosY = h/10;
-            c.drawBitmap(litAir, laPosX, laPosY, null);
-            float lsPosX = w/4;
-            float lsPosY = 2 * h/3;
-            c.drawBitmap(litSub, lsPosX, lsPosY, null);
-            float maPosX = w/4;
-            float maPosY = h/5;
-            c.drawBitmap(medAir, maPosX, maPosY, null);
-            float msPosX = w/2;
-            float msPosY = 9 * h/11;
-            c.drawBitmap(medSub, msPosX, msPosY, null);
+            battleship.setPosition(w/2, h/2);
+            bigAir.setPosition(3 * w/5, h/13);
+            bigSub.setPosition(2 * w/5, 2 * h/3);
+            litAir.setPosition(w/10, h/10);
+            litSub.setPosition(w/4,2 * h/3);
+            medAir.setPosition(w/4, h/5);
+            medSub.setPosition(w/2, 9 * h/11);
+
+            battleship.draw(c);
+            bigAir.draw(c);
+            bigSub.draw(c);
+            litAir.draw(c);
+            litSub.draw(c);
+            medAir.draw(c);
+            medSub.draw(c);
         }
+
 
 }
