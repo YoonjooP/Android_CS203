@@ -27,7 +27,7 @@ public class Airplane extends Enemy {
             case BIG:
                 return 0.1f;
             case MEDIUM:
-                return 0.083f;
+                return 0.07f;
             default:
                 return 0.05f;
         }
