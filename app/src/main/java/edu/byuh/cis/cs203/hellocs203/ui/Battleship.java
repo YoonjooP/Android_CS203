@@ -5,6 +5,9 @@ import android.graphics.BitmapFactory;
 
 import edu.byuh.cis.cs203.hellocs203.R;
 
+/**
+ * battleship
+ */
 public class Battleship extends Sprite {
     public Battleship(Resources r) {
         super(r);

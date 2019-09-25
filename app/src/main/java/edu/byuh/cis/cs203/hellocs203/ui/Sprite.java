@@ -6,6 +6,9 @@ import android.graphics.Canvas;
 import android.graphics.RectF;
 import android.util.Log;
 
+/**
+ * scale, position, draw
+ */
 public abstract class Sprite {
     protected Bitmap bitmap;
     protected RectF pos;

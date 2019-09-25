@@ -5,7 +5,9 @@ import android.graphics.BitmapFactory;
 
 import edu.byuh.cis.cs203.hellocs203.R;
 
-
+/**
+ * submarine
+ */
 public class Submarine extends Enemy {
     public Submarine(Resources r) {
         super(r);
