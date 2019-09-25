@@ -4,6 +4,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.RectF;
+import android.util.Log;
 
 public abstract class Sprite {
     protected Bitmap bitmap;
@@ -19,10 +20,10 @@ public abstract class Sprite {
     public void scale(float screenWidth) {
 
         float sclX = screenWidth * relativeWidth();
-        float sclY = sclX * (bitmap.getHeight()/bitmap.getWidth());
+        float sclY = sclX * ((float)bitmap.getHeight() / (float)bitmap.getWidth());
 
         bitmap = Bitmap.createScaledBitmap(bitmap,
-                (int) sclX, (int) sclY, true);
+                (int)sclX, (int)sclY, true);
     }
 
     public void setPosition(float x, float y) {

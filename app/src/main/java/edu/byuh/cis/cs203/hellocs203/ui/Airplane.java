@@ -24,9 +24,12 @@ public class Airplane extends Enemy {
     @Override
     protected float relativeWidth() {
         switch (size) {
-            case BIG: return 0.15f;
-            case MEDIUM: return 0.12f;
-            default: return 0.04f;
+            case BIG:
+                return 0.2f;
+            case MEDIUM:
+                return 0.10f;
+            default:
+                return 0.05f;
         }
     }
 }

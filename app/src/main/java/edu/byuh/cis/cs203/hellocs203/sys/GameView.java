@@ -48,7 +48,6 @@ public class GameView extends View {
         // screen size
             float w = c.getWidth();
             float h = c.getHeight();
-
             float watersize = w * 0.02f;
             if (init == false) {
                 battleship.scale(w);
@@ -58,6 +57,7 @@ public class GameView extends View {
                 bigSub.scale(w);
                 litSub.scale(w);
                 medAir.scale(w);
+                medSub.scale(w);
                 water = Bitmap.createScaledBitmap(water,
                         (int) watersize, (int) watersize, true);
 
