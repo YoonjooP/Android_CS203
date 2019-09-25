@@ -6,6 +6,10 @@ import android.graphics.BitmapFactory;
 import edu.byuh.cis.cs203.hellocs203.R;
 
 public class Airplane extends Enemy {
+    /**
+     * airplane
+     * @param r resource object
+     */
     public Airplane(Resources r) {
         super(r);
         double rannum = Math.random();
