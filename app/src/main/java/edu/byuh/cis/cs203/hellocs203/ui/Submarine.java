@@ -25,7 +25,7 @@ public class Submarine extends Enemy {
             bitmap = BitmapFactory.decodeResource(r, R.drawable.little_submarine);
             size = Size.SMALL;
         }
-        velocity.set ((float)Math.random()*10, 0.0f);
+        velocity.set ((float)Math.random()*10+3, 0.0f);
     }
 
     @Override
