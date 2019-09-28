@@ -102,7 +102,7 @@ public class GameView extends View {
             for ( Submarine s : sub ) {
                 s.move();
             }
-            sendMessageDelayed(obtainMessage(), 0);
+            sendMessageDelayed(obtainMessage(), 50);
         }
 
     }
