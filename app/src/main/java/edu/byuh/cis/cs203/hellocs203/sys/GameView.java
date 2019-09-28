@@ -31,11 +31,11 @@ public class GameView extends View {
         init = false;
         battleship = new Battleship(getResources());
         air = new ArrayList<>();
+        sub = new ArrayList<>();
         for (int i=0; i<5; i++){
             air.add(new Airplane(getResources()));
             sub.add(new Submarine(getResources()));
         }
-        sub = new ArrayList<>();
         water = BitmapFactory.decodeResource(getResources(), R.drawable.water);
 
         Timer timer = new Timer();
