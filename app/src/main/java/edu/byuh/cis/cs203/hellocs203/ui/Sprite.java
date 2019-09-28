@@ -12,6 +12,7 @@ public abstract class Sprite {
     protected Bitmap bitmap;
     protected RectF pos;
     protected PointF velocity;
+    protected float screenWidth;
 
     /**
      * scale, position, draw
@@ -24,7 +25,7 @@ public abstract class Sprite {
     protected abstract float relativeWidth();
 
     public void scale(float screenWidth) {
-
+        this.screenWidth = screenWidth;
         float sclX = screenWidth * relativeWidth();
         float sclY = sclX * ((float)bitmap.getHeight() / (float)bitmap.getWidth());
 

@@ -23,6 +23,8 @@ public class Airplane extends Enemy {
             bitmap = BitmapFactory.decodeResource(r, R.drawable.little_airplane);
             size = Size.SMALL;
         }
+
+        velocity.set (-(float)Math.random()*10, 0.0f);
     }
 
     @Override
@@ -34,6 +36,16 @@ public class Airplane extends Enemy {
                 return 0.07f;
             default:
                 return 0.05f;
+        }
+
+
+    }
+
+    @Override
+    public void move() {
+        super.move();
+        if (pos.right<0) {
+            pos.offsetTo(screenWidth, pos.top);
         }
     }
 }

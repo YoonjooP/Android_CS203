@@ -25,10 +25,8 @@ public class Submarine extends Enemy {
             bitmap = BitmapFactory.decodeResource(r, R.drawable.little_submarine);
             size = Size.SMALL;
         }
-        float dy = float (Math.random()*10, 0.0f);
+        velocity.set ((float)Math.random()*10, 0.0f);
     }
-
-    public void set
 
     @Override
     protected float relativeWidth() {
@@ -36,6 +34,14 @@ public class Submarine extends Enemy {
             case BIG: return 0.1f;
             case MEDIUM: return 0.07f;
             default: return 0.05f;
+        }
+    }
+
+    @Override
+    public void move() {
+        super.move();
+        if (pos.left>screenWidth) {
+            pos.offsetTo(0,pos.top);
         }
     }
 }
