@@ -5,6 +5,8 @@ import android.graphics.BitmapFactory;
 
 import edu.byuh.cis.cs203.hellocs203.R;
 
+import static java.lang.Math.random;
+
 public class Submarine extends Enemy {
 
     /**
@@ -12,7 +14,7 @@ public class Submarine extends Enemy {
      */
     public Submarine(Resources r) {
         super(r);
-        double rannum = Math.random();
+        double rannum = random();
         if (rannum<0.33) {
             bitmap = BitmapFactory.decodeResource(r, R.drawable.big_submarine);
             size = Size.BIG;
@@ -23,7 +25,10 @@ public class Submarine extends Enemy {
             bitmap = BitmapFactory.decodeResource(r, R.drawable.little_submarine);
             size = Size.SMALL;
         }
+        float dy = float (Math.random()*10, 0.0f);
     }
+
+    public void set
 
     @Override
     protected float relativeWidth() {

@@ -3,6 +3,7 @@ package edu.byuh.cis.cs203.hellocs203.ui;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.PointF;
 import android.graphics.RectF;
 import android.util.Log;
 
@@ -10,13 +11,14 @@ import android.util.Log;
 public abstract class Sprite {
     protected Bitmap bitmap;
     protected RectF pos;
+    protected PointF velocity;
 
     /**
      * scale, position, draw
      */
     public Sprite(Resources r) {
         pos = new RectF();
-
+        velocity = new PointF();
     }
 
     protected abstract float relativeWidth();
@@ -36,5 +38,9 @@ public abstract class Sprite {
 
     public void draw(Canvas c) {
         c.drawBitmap(bitmap, pos.left, pos.top, null);
+    }
+
+    public void move() {
+        pos.offset (velocity.x, velocity.y);
     }
 }

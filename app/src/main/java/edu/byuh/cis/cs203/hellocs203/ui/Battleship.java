@@ -13,10 +13,13 @@ public class Battleship extends Sprite {
     public Battleship(Resources r) {
         super(r);
         bitmap = BitmapFactory.decodeResource(r, R.drawable.battleship);
+        velocity.set(0.0f, 0.0f);
     }
 
     @Override
     protected float relativeWidth() {
         return 0.4f;
     }
+
+
 }
