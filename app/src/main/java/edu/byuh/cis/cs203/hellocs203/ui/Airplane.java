@@ -2,6 +2,7 @@ package edu.byuh.cis.cs203.hellocs203.ui;
 
 import android.content.res.Resources;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 
 import edu.byuh.cis.cs203.hellocs203.R;
 
@@ -43,9 +44,10 @@ public class Airplane extends Enemy {
 
     @Override
     public void move() {
+        Canvas c = new Canvas();
         super.move();
-        if (pos.right<0) {
-            pos.offsetTo(screenWidth, pos.top);
+        if (pos.right<-250) {
+            pos.offsetTo(screenWidth, (float)Math.random()*screenHeight/2);
         }
     }
 }

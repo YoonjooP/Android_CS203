@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.PointF;
 import android.graphics.RectF;
+import android.util.DisplayMetrics;
 import android.util.Log;
 
 
@@ -13,7 +14,7 @@ public abstract class Sprite {
     protected RectF pos;
     protected PointF velocity;
     protected float screenWidth;
-
+    protected float screenHeight;
     /**
      * scale, position, draw
      */
@@ -31,6 +32,9 @@ public abstract class Sprite {
 
         bitmap = Bitmap.createScaledBitmap(bitmap,
                 (int)sclX, (int)sclY, true);
+    }
+    public void getH(float screenHeight){
+        this.screenHeight = screenHeight;
     }
 
     public void setPosition(float x, float y) {

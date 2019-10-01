@@ -49,14 +49,17 @@ public class GameView extends View {
             float w = c.getWidth();
             float h = c.getHeight();
             float watersize = w * 0.02f;
+
             if (init == false) {
                 battleship.scale(w);
                 for ( Airplane a : air ) {
                     a.scale(w);
+                    a.getH(h);
                     a.setPosition(w, (float)Math.random()*h/2);
                 }
                 for ( Submarine s : sub ) {
                     s.scale(w);
+                    s.getH(h);
                     s.setPosition(0, (float)Math.random()*h/2+h/2);
                 }
                 water = Bitmap.createScaledBitmap(water,

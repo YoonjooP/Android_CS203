@@ -2,6 +2,7 @@ package edu.byuh.cis.cs203.hellocs203.ui;
 
 import android.content.res.Resources;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 
 import edu.byuh.cis.cs203.hellocs203.R;
 
@@ -41,7 +42,7 @@ public class Submarine extends Enemy {
     public void move() {
         super.move();
         if (pos.left>screenWidth) {
-            pos.offsetTo(0,pos.top);
+            pos.offsetTo(-250, (float)Math.random()*screenHeight/2+screenHeight);
         }
     }
 }
