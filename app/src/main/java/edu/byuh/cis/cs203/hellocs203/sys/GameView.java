@@ -55,12 +55,12 @@ public class GameView extends View {
                 for ( Airplane a : air ) {
                     a.scale(w);
                     a.getH(h);
-                    a.setPosition(w, (float)Math.random()*h/2);
+                    a.setPosition(w, (float)Math.random()*h/3);
                 }
                 for ( Submarine s : sub ) {
                     s.scale(w);
                     s.getH(h);
-                    s.setPosition(0, (float)Math.random()*h/2+h/2);
+                    s.setPosition(0, (float)Math.random()*h/3+2*h/3);
                 }
                 water = Bitmap.createScaledBitmap(water,
                         (int) watersize, (int) watersize, true);

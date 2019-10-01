@@ -47,7 +47,7 @@ public class Airplane extends Enemy {
         Canvas c = new Canvas();
         super.move();
         if (pos.right<-250) {
-            pos.offsetTo(screenWidth, (float)Math.random()*screenHeight/2);
+            pos.offsetTo(screenWidth, (float)Math.random()*screenHeight/3);
         }
     }
 }

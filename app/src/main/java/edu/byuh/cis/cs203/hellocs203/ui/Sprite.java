@@ -15,6 +15,7 @@ public abstract class Sprite {
     protected PointF velocity;
     protected float screenWidth;
     protected float screenHeight;
+
     /**
      * scale, position, draw
      */

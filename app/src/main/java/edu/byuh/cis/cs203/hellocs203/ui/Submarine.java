@@ -42,7 +42,7 @@ public class Submarine extends Enemy {
     public void move() {
         super.move();
         if (pos.left>screenWidth) {
-            pos.offsetTo(-250, (float)Math.random()*screenHeight/2+screenHeight);
+            pos.offsetTo(-250, (float)Math.random()*screenHeight/3+screenHeight*2/3);
         }
     }
 }
