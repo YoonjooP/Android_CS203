@@ -26,6 +26,10 @@ public abstract class Sprite {
 
     protected abstract float relativeWidth();
 
+    /**
+     * scale method
+     * @param screenWidth pass the screen width the view
+     */
     public void scale(float screenWidth) {
         this.screenWidth = screenWidth;
         float sclX = screenWidth * relativeWidth();
@@ -34,18 +38,35 @@ public abstract class Sprite {
         bitmap = Bitmap.createScaledBitmap(bitmap,
                 (int)sclX, (int)sclY, true);
     }
+
+    /**
+     * get screen height
+     * @param screenHeight
+     */
     public void getH(float screenHeight){
         this.screenHeight = screenHeight;
     }
 
+    /**
+     * bitmap center
+     * @param x center
+     * @param y center
+     */
     public void setPosition(float x, float y) {
         pos.offsetTo(x-bitmap.getWidth()/2, y-bitmap.getHeight()/2);
     }
 
+    /**
+     * drawBitmap
+     * @param c
+     */
     public void draw(Canvas c) {
         c.drawBitmap(bitmap, pos.left, pos.top, null);
     }
 
+    /**
+     * move
+     */
     public void move() {
         pos.offset (velocity.x, velocity.y);
     }

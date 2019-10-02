@@ -26,6 +26,10 @@ public class GameView extends View {
     ArrayList<Submarine> sub;
     private boolean init;
 
+    /**
+     * game view constructor
+     * @param c
+     */
     public GameView (Context c) {
         super(c);
         init = false;
