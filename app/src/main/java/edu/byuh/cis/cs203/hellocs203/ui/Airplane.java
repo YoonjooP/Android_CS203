@@ -45,14 +45,12 @@ public class Airplane extends Enemy {
     @Override
     public void move() {
         super.move();
-        randomizeSpeed();
+
         if (pos.right<-250) {
             pos.offsetTo(screenWidth, (float) Math.random() * screenHeight / 3);
         }
 
     }
 
-    public void randomizeSpeed() {
-        double v = Math.random() * pos.width() * 0.05 * Math.signum(velocity.x);
-    }
+
 }
