@@ -1,4 +1,4 @@
-package edu.byuh.cis.cs203.hellocs203.ui;
+package edu.byuh.cis.cs203.hellocs203.system;
 
 import android.content.res.Resources;
 import android.graphics.BitmapFactory;
@@ -11,7 +11,7 @@ public class Battleship extends Sprite {
      * battleship
      */
     public Battleship(Resources r) {
-        super(r);
+        super();
         bitmap = BitmapFactory.decodeResource(r, R.drawable.battleship);
         velocity.set(0.0f, 0.0f);
     }

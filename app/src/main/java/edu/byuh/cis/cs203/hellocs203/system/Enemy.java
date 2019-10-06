@@ -1,4 +1,4 @@
-package edu.byuh.cis.cs203.hellocs203.ui;
+package edu.byuh.cis.cs203.hellocs203.system;
 
 import android.content.res.Resources;
 
@@ -9,8 +9,8 @@ public abstract class Enemy extends Sprite {
     /**
      * enemy abstract class
      */
-    public Enemy(Resources r) {
-        super(r);
+    public Enemy() {
+        super();
     }
 
     @Override

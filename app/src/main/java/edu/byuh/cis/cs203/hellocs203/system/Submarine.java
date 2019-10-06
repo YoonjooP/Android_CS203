@@ -1,8 +1,7 @@
-package edu.byuh.cis.cs203.hellocs203.ui;
+package edu.byuh.cis.cs203.hellocs203.system;
 
 import android.content.res.Resources;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
 
 import edu.byuh.cis.cs203.hellocs203.R;
 
@@ -14,7 +13,7 @@ public class Submarine extends Enemy {
      * submarine
      */
     public Submarine(Resources r) {
-        super(r);
+        super();
         double rannum = random();
         if (rannum<0.33) {
             bitmap = BitmapFactory.decodeResource(r, R.drawable.big_submarine);

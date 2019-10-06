@@ -1,4 +1,4 @@
-package edu.byuh.cis.cs203.hellocs203.sys;
+package edu.byuh.cis.cs203.hellocs203.ui;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -8,14 +8,18 @@ import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 
 import java.util.ArrayList;
 
 import edu.byuh.cis.cs203.hellocs203.R;
-import edu.byuh.cis.cs203.hellocs203.ui.Airplane;
-import edu.byuh.cis.cs203.hellocs203.ui.Battleship;
-import edu.byuh.cis.cs203.hellocs203.ui.Submarine;
+import edu.byuh.cis.cs203.hellocs203.system.Airplane;
+import edu.byuh.cis.cs203.hellocs203.system.Battleship;
+import edu.byuh.cis.cs203.hellocs203.system.DepthCharge;
+import edu.byuh.cis.cs203.hellocs203.system.Direction;
+import edu.byuh.cis.cs203.hellocs203.system.Missile;
+import edu.byuh.cis.cs203.hellocs203.system.Submarine;
 
 public class GameView extends View {
 
@@ -24,7 +28,11 @@ public class GameView extends View {
     private Bitmap water;
     ArrayList<Airplane> air;
     ArrayList<Submarine> sub;
+    ArrayList<Missile> mis;
+    ArrayList<DepthCharge> dech;
     private boolean init;
+    float w;
+    float h;
 
     /**
      * game view constructor
@@ -36,6 +44,8 @@ public class GameView extends View {
         battleship = new Battleship(getResources());
         air = new ArrayList<>();
         sub = new ArrayList<>();
+        mis = new ArrayList<>();
+        dech = new ArrayList<>();
         for (int i=0; i<5; i++){
             air.add(new Airplane(getResources()));
             sub.add(new Submarine(getResources()));
@@ -50,8 +60,8 @@ public class GameView extends View {
          */
         public void onDraw (Canvas c){
         // screen size
-            float w = c.getWidth();
-            float h = c.getHeight();
+            w = c.getWidth();
+            h = c.getHeight();
             float watersize = w * 0.02f;
 
             if (init == false) {
@@ -87,6 +97,12 @@ public class GameView extends View {
             for ( Submarine s : sub ) {
                 s.draw(c);
             }
+            for ( Missile mi : mis ) {
+                mi.draw(c);
+            }
+            for ( DepthCharge dc : dech ) {
+                dc.draw(c);
+            }
 
 
 
@@ -110,10 +126,39 @@ public class GameView extends View {
             for ( Submarine s : sub ) {
                 s.move();
             }
+            for ( Missile mi : mis ) {
+                mi.move();
+            }
+            for ( DepthCharge dc : dech ) {
+                dc.move();
+            }
             invalidate();
             sendMessageDelayed(obtainMessage(), 50);
         }
 
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent m) {
+        float x = m.getX();
+        float y = m.getY();
+        if (m.getAction() == MotionEvent.ACTION_MOVE) {
+            if (y>h/2) {
+                Log.d("Half screen:", "Clicked!");
+                dech.add(new DepthCharge(getResources()));
+                dech.get(dech.size()-1).scale(w);
+                dech.get(dech.size()-1).setPosition(w/2, h/2);
+            } else {
+                if (x>w/2){
+                    mis.add(new Missile(Direction.LEFT_TO_RIGHT));
+                    mis.get(mis.size()-1).setPosition(w/2, h/2);
+                } else {
+                    mis.add(new Missile(Direction.RIGHT_TO_LEFT));
+                    mis.get(mis.size()-1).setPosition(w/2, h/2);
+                }
+            }
+        }
+        return true;
     }
 
 }

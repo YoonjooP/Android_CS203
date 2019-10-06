@@ -1,12 +1,10 @@
-package edu.byuh.cis.cs203.hellocs203.ui;
+package edu.byuh.cis.cs203.hellocs203.system;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.PointF;
 import android.graphics.RectF;
-import android.util.DisplayMetrics;
-import android.util.Log;
 
 
 public abstract class Sprite {
@@ -19,7 +17,7 @@ public abstract class Sprite {
     /**
      * scale, position, draw
      */
-    public Sprite(Resources r) {
+    public Sprite() {
         pos = new RectF();
         velocity = new PointF();
     }
