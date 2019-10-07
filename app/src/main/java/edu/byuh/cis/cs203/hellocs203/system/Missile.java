@@ -22,12 +22,15 @@ public class Missile extends Sprite {
     @Override
     public void draw(Canvas c) {
         Paint pinkPaint = new Paint();
-        pinkPaint.setColor(Color.rgb(255, 196, 203));
+        Paint purplePaint = new Paint();
+        pinkPaint.setColor(Color.rgb(255, 103, 130));
+        purplePaint.setColor(Color.rgb(146, 79, 207));
         pinkPaint.setStrokeWidth(15.0f);
+        purplePaint.setStrokeWidth(15.0f);
         if (dir == Direction.LEFT_TO_RIGHT){
             c.drawLine(pos.left, pos.bottom, pos.right, pos.top, pinkPaint);
         } else {
-            c.drawLine(pos.left, pos.top, pos.right, pos.bottom, pinkPaint);
+            c.drawLine(pos.left, pos.top, pos.right, pos.bottom, purplePaint);
         }
 
     }
