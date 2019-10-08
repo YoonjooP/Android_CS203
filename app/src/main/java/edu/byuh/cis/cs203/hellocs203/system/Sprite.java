@@ -52,6 +52,7 @@ public abstract class Sprite {
      */
     public void setPosition(float x, float y) {
         pos.offsetTo(x-bitmap.getWidth()/2, y-bitmap.getHeight()/2);
+
     }
 
     /**

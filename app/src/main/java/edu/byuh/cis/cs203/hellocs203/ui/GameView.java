@@ -19,6 +19,7 @@ import edu.byuh.cis.cs203.hellocs203.system.Battleship;
 import edu.byuh.cis.cs203.hellocs203.system.DepthCharge;
 import edu.byuh.cis.cs203.hellocs203.system.Direction;
 import edu.byuh.cis.cs203.hellocs203.system.Missile;
+import edu.byuh.cis.cs203.hellocs203.system.Star;
 import edu.byuh.cis.cs203.hellocs203.system.Submarine;
 
 public class GameView extends View {
@@ -32,6 +33,7 @@ public class GameView extends View {
     ArrayList<Missile> trashh;
     ArrayList<DepthCharge> dech;
     ArrayList<DepthCharge> trash;
+    ArrayList<Star> star;
     private boolean init;
     float w;
     float h;
@@ -48,6 +50,7 @@ public class GameView extends View {
         sub = new ArrayList<>();
         mis = new ArrayList<>();
         dech = new ArrayList<>();
+        star = new ArrayList<>();
         for (int i=0; i<5; i++){
             air.add(new Airplane(getResources()));
             sub.add(new Submarine(getResources()));
@@ -104,6 +107,9 @@ public class GameView extends View {
             }
             for ( DepthCharge dc : dech ) {
                 dc.draw(c);
+            }
+            for (Star st : star ) {
+                st.draw(c);
             }
 
 
