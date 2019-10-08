@@ -29,7 +29,9 @@ public class GameView extends View {
     ArrayList<Airplane> air;
     ArrayList<Submarine> sub;
     ArrayList<Missile> mis;
+    ArrayList<Missile> trashh;
     ArrayList<DepthCharge> dech;
+    ArrayList<DepthCharge> trash;
     private boolean init;
     float w;
     float h;
@@ -144,7 +146,6 @@ public class GameView extends View {
         float y = m.getY();
         if (m.getAction() == MotionEvent.ACTION_MOVE) {
             if (y>h/2) {
-                Log.d("Half screen:", "Clicked!");
                 dech.add(new DepthCharge(getResources()));
                 dech.get(dech.size()-1).scale(w);
                 dech.get(dech.size()-1).setPosition(w/2, h/2);
@@ -156,6 +157,24 @@ public class GameView extends View {
                     mis.add(new Missile(Direction.RIGHT_TO_LEFT));
                     mis.get(mis.size()-1).setPosition(w/2, h/2);
                 }
+            }
+            trash = new ArrayList<>();
+            trashh = new ArrayList<>();
+            for (DepthCharge de : dech ) {
+                if (de.getPos().top>h){
+                    trash.add(de);
+                }
+            }
+            for (DepthCharge de: trash) {
+                dech.remove(de);
+            }
+            for (Missile mi : mis ) {
+                if (mi.getPos().bottom<0) {
+                    trashh.add(mi);
+                }
+            }
+            for (Missile mi : trashh) {
+                mis.remove(mi);
             }
         }
         return true;

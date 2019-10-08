@@ -68,4 +68,8 @@ public abstract class Sprite {
     public void move() {
         pos.offset (velocity.x, velocity.y);
     }
+
+    public RectF getPos() {
+        return pos;
+    }
 }
