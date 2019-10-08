@@ -19,6 +19,12 @@ public class DepthCharge extends Sprite {
 
     @Override
     protected float relativeWidth() {
-        return 0.1f;
+        return 0.02f;
+    }
+
+    @Override
+    public void setPosition(float x, float y) {
+            pos.offsetTo(x-pos.width()/2, y-pos.height()/2+50);
+
     }
 }

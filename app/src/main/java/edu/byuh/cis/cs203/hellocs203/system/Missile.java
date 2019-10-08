@@ -11,11 +11,11 @@ public class Missile extends Sprite {
     public Missile (Direction d) {
         super();
         dir = d;
-        pos.set(0, 0, 10, 10);
+        pos.set(0, 0, 30, 30);
         if (dir == Direction.LEFT_TO_RIGHT) {
-            velocity.set(5.0f, -5.0f);
+            velocity.set(15.0f, -15.0f);
         } else {
-            velocity.set(-5.0f, -5.0f);
+            velocity.set(-15.0f, -15.0f);
         }
     }
 
@@ -37,7 +37,11 @@ public class Missile extends Sprite {
 
     @Override
     public void setPosition(float x, float y) {
-        pos.offsetTo(x-pos.width()/2, y-pos.height()/2);
+        if (dir == Direction.LEFT_TO_RIGHT){
+            pos.offsetTo(x-pos.width()/2+395, y-pos.height()/2-155);
+        } else {
+            pos.offsetTo(x-pos.width()/2-360, y-pos.height()/2-150);
+        }
     }
 
     @Override

@@ -144,7 +144,7 @@ public class GameView extends View {
     public boolean onTouchEvent(MotionEvent m) {
         float x = m.getX();
         float y = m.getY();
-        if (m.getAction() == MotionEvent.ACTION_MOVE) {
+        if (m.getAction() == MotionEvent.ACTION_DOWN) {
             if (y>h/2) {
                 dech.add(new DepthCharge(getResources()));
                 dech.get(dech.size()-1).scale(w);
