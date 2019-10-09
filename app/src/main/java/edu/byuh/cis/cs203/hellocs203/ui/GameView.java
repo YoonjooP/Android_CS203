@@ -34,6 +34,7 @@ public class GameView extends View {
     ArrayList<DepthCharge> dech;
     ArrayList<DepthCharge> trash;
     ArrayList<Star> star;
+    ArrayList<Star> trashhh;
     private boolean init;
     float w;
     float h;
@@ -102,17 +103,43 @@ public class GameView extends View {
             for ( Submarine s : sub ) {
                 s.draw(c);
             }
+            for (Star st : star ) {
+                st.draw(c);
+            }
             for ( Missile mi : mis ) {
                 mi.draw(c);
             }
             for ( DepthCharge dc : dech ) {
                 dc.draw(c);
             }
-            for (Star st : star ) {
-                st.draw(c);
+            trash = new ArrayList<>();
+            trashh = new ArrayList<>();
+            trashhh = new ArrayList<>();
+            for (Star st : star) {
+                if (st.getIsdraw() == true) {
+                    trashhh.add(st);
+                }
+            }
+            for (Star st : trashhh) {
+                star.remove(st);
             }
 
-
+            for (DepthCharge de : dech ) {
+                if (de.getPos().top>h){
+                    trash.add(de);
+                }
+            }
+            for (DepthCharge de: trash) {
+                dech.remove(de);
+            }
+            for (Missile mi : mis ) {
+                if (mi.getPos().bottom<0) {
+                    trashh.add(mi);
+                }
+            }
+            for (Missile mi : trashh) {
+                mis.remove(mi);
+            }
 
         }
 
@@ -140,8 +167,10 @@ public class GameView extends View {
             for ( DepthCharge dc : dech ) {
                 dc.move();
             }
+
             invalidate();
             sendMessageDelayed(obtainMessage(), 50);
+
         }
 
     }
@@ -155,33 +184,22 @@ public class GameView extends View {
                 dech.add(new DepthCharge(getResources()));
                 dech.get(dech.size()-1).scale(w);
                 dech.get(dech.size()-1).setPosition(w/2, h/2);
+
             } else {
                 if (x>w/2){
                     mis.add(new Missile(Direction.LEFT_TO_RIGHT));
                     mis.get(mis.size()-1).setPosition(w/2, h/2);
+                    star.add(new Star(getResources(),Direction.LEFT_TO_RIGHT));
+                    star.get(star.size()-1).setPosition(w/2, h/2);
                 } else {
                     mis.add(new Missile(Direction.RIGHT_TO_LEFT));
                     mis.get(mis.size()-1).setPosition(w/2, h/2);
+                    star.add(new Star(getResources(),Direction.RIGHT_TO_LEFT));
+                    star.get(star.size()-1).setPosition(w/2, h/2);
                 }
             }
-            trash = new ArrayList<>();
-            trashh = new ArrayList<>();
-            for (DepthCharge de : dech ) {
-                if (de.getPos().top>h){
-                    trash.add(de);
-                }
-            }
-            for (DepthCharge de: trash) {
-                dech.remove(de);
-            }
-            for (Missile mi : mis ) {
-                if (mi.getPos().bottom<0) {
-                    trashh.add(mi);
-                }
-            }
-            for (Missile mi : trashh) {
-                mis.remove(mi);
-            }
+
+
         }
         return true;
     }
