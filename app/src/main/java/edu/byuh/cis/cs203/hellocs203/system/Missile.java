@@ -8,6 +8,10 @@ public class Missile extends Sprite {
 
     private Direction dir;
 
+    /**
+     * missile
+     * @param d
+     */
     public Missile (Direction d) {
         super();
         dir = d;

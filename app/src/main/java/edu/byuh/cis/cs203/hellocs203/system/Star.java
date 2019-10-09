@@ -12,6 +12,11 @@ public class Star extends Sprite {
     private Direction di;
     private boolean isdraw;
 
+    /**
+     * star
+     * @param r resources
+     * @param di direction
+     */
     public Star(Resources r, Direction di) {
         super();
         this.r = r;
