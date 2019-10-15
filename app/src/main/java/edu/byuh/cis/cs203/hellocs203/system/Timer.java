@@ -8,7 +8,9 @@ import java.util.ArrayList;
 public class Timer extends Handler {
 
     ArrayList<TickListener> tili;
-
+    /**
+     * Handler subclass timer
+     */
     public Timer () {
 
         tili = new ArrayList<>();
