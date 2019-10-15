@@ -10,16 +10,10 @@ public class Battleship extends Sprite {
     /**
      * battleship
      */
-    public Battleship(Resources r) {
+    public Battleship() {
         super();
-        bitmap = BitmapFactory.decodeResource(r, R.drawable.battleship);
+        bitmap = ImageCache.getBattleshipImage();
         velocity.set(0.0f, 0.0f);
     }
-
-    @Override
-    protected float relativeWidth() {
-        return 0.4f;
-    }
-
 
 }

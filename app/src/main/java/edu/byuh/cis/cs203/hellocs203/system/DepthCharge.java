@@ -17,10 +17,6 @@ public class DepthCharge extends Sprite {
         velocity.set(0, 20.0f);
     }
 
-    @Override
-    protected float relativeWidth() {
-        return 0.02f;
-    }
 
     @Override
     public void setPosition(float x, float y) {

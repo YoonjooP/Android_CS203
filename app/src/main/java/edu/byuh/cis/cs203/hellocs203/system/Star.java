@@ -27,10 +27,6 @@ public class Star extends Sprite {
         isdraw = false;
     }
 
-    @Override
-    protected float relativeWidth() {
-        return 0.1f;
-    }
 
     @Override
     public void setPosition(float x, float y) {

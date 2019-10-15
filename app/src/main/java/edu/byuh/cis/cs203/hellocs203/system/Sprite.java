@@ -22,20 +22,6 @@ public abstract class Sprite {
         velocity = new PointF();
     }
 
-    protected abstract float relativeWidth();
-
-    /**
-     * scale method
-     * @param screenWidth pass the screen width the view
-     */
-    public void scale(float screenWidth) {
-        this.screenWidth = screenWidth;
-        float sclX = screenWidth * relativeWidth();
-        float sclY = sclX * ((float)bitmap.getHeight() / (float)bitmap.getWidth());
-
-        bitmap = Bitmap.createScaledBitmap(bitmap,
-                (int)sclX, (int)sclY, true);
-    }
 
     /**
      * get screen height

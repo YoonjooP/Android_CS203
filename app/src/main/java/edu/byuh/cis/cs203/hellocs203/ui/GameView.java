@@ -17,6 +17,7 @@ import edu.byuh.cis.cs203.hellocs203.system.Airplane;
 import edu.byuh.cis.cs203.hellocs203.system.Battleship;
 import edu.byuh.cis.cs203.hellocs203.system.DepthCharge;
 import edu.byuh.cis.cs203.hellocs203.misc.Direction;
+import edu.byuh.cis.cs203.hellocs203.system.ImageCache;
 import edu.byuh.cis.cs203.hellocs203.system.Missile;
 import edu.byuh.cis.cs203.hellocs203.system.Star;
 import edu.byuh.cis.cs203.hellocs203.system.Submarine;
@@ -45,17 +46,14 @@ public class GameView extends View {
     public GameView (Context c) {
         super(c);
         init = false;
-        battleship = new Battleship(getResources());
+
         air = new ArrayList<>();
         sub = new ArrayList<>();
         mis = new ArrayList<>();
         dech = new ArrayList<>();
         star = new ArrayList<>();
-        for (int i=0; i<5; i++){
-            air.add(new Airplane(getResources()));
-            sub.add(new Submarine(getResources()));
-        }
-        water = BitmapFactory.decodeResource(getResources(), R.drawable.water);
+
+
 
 //        Timer timer = new Timer();
     }
@@ -70,14 +68,19 @@ public class GameView extends View {
             float watersize = w * 0.02f;
 
             if (init == false) {
-                battleship.scale(w);
+                ImageCache.init(getResources(),w,h);
+                battleship = new Battleship(getResources());
+                water = BitmapFactory.decodeResource(getResources(), R.drawable.water);
+                for (int i=0; i<5; i++){
+                    air.add(new Airplane(getResources()));
+                    sub.add(new Submarine(getResources()));
+                }
+
                 for ( Airplane a : air ) {
-                    a.scale(w);
                     a.getH(h);
                     a.setPosition(w, (float)Math.random()*h/3);
                 }
                 for ( Submarine s : sub ) {
-                    s.scale(w);
                     s.getH(h);
                     s.setPosition(0, (float)Math.random()*h/3+2*h/3);
                 }
@@ -181,7 +184,6 @@ public class GameView extends View {
         if (m.getAction() == MotionEvent.ACTION_DOWN) {
             if (y>h/2) {
                 dech.add(new DepthCharge(getResources()));
-                dech.get(dech.size()-1).scale(w);
                 dech.get(dech.size()-1).setPosition(w/2, h/2);
 
             } else {

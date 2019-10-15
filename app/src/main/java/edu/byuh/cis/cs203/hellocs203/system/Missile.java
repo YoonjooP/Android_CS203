@@ -50,8 +50,4 @@ public class Missile extends Sprite {
         }
     }
 
-    @Override
-    protected float relativeWidth() {
-        return 0;
-    }
 }

@@ -5,7 +5,6 @@ import edu.byuh.cis.cs203.hellocs203.misc.Size;
 
 public abstract class Enemy extends Sprite {
 
-    protected Size size;
     /**
      * enemy abstract class
      */
