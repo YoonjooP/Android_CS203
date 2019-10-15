@@ -22,6 +22,7 @@ import edu.byuh.cis.cs203.hellocs203.system.Missile;
 import edu.byuh.cis.cs203.hellocs203.system.Star;
 import edu.byuh.cis.cs203.hellocs203.system.Submarine;
 import edu.byuh.cis.cs203.hellocs203.system.TickListener;
+import edu.byuh.cis.cs203.hellocs203.system.Timer;
 
 public class GameView extends View implements TickListener {
 
@@ -39,6 +40,7 @@ public class GameView extends View implements TickListener {
     private boolean init;
     float w;
     float h;
+    private Timer timer;
 
     /**
      * game view constructor
@@ -53,10 +55,8 @@ public class GameView extends View implements TickListener {
         mis = new ArrayList<>();
         dech = new ArrayList<>();
         star = new ArrayList<>();
+        timer = new Timer();
 
-
-
-//        Timer timer = new Timer();
     }
         @Override
         /**
@@ -146,37 +146,7 @@ public class GameView extends View implements TickListener {
 
         }
 
-    /**
-     * Inner class
-     */
-//    public class Timer extends Handler {
-//
-//        public Timer () {
-//            sendMessageDelayed(obtainMessage(), 0);
-//        }
-//
-//        @Override
-//        public void handleMessage (Message m) {
-//
-//            for ( Airplane a : air ) {
-//                a.move();
-//            }
-//            for ( Submarine s : sub ) {
-//                s.move();
-//            }
-//            for ( Missile mi : mis ) {
-//                mi.move();
-//            }
-//            for ( DepthCharge dc : dech ) {
-//                dc.move();
-//            }
-//
-//            invalidate();
-//            sendMessageDelayed(obtainMessage(), 50);
-//
-//        }
-//
-//    }
+
 
     @Override
     public boolean onTouchEvent(MotionEvent m) {
