@@ -4,17 +4,26 @@ package edu.byuh.cis.cs203.hellocs203.system;
 
 public abstract class Enemy extends Sprite {
 
+    protected static float screenWidth;
+    protected static float screenHeight;
+
     /**
      * enemy abstract class
      */
     public Enemy() {
         super();
+
     }
 
     @Override
     public void move() {
         super.move();
         randomizeSpeed();
+    }
+
+    public static void setwh(float w, float h) {
+        screenWidth = w;
+        screenHeight = h;
     }
 
     public void randomizeSpeed() {

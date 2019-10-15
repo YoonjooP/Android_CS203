@@ -19,10 +19,13 @@ public class Submarine extends Enemy {
         double rannum = random();
         if (rannum<0.33) {
             bitmap = ImageCache.getSubmarineImage(Size.BIG, Direction.LEFT_TO_RIGHT);
+            pos.set(0,0,bitmap.getWidth(),bitmap.getHeight());
         } else if (rannum>=0.33 && rannum <0.66) {
             bitmap = ImageCache.getSubmarineImage(Size.MEDIUM, Direction.LEFT_TO_RIGHT);
+            pos.set(0,0,bitmap.getWidth(),bitmap.getHeight());
         } else {
             bitmap = ImageCache.getSubmarineImage(Size.SMALL, Direction.LEFT_TO_RIGHT);
+            pos.set(0,0,bitmap.getWidth(),bitmap.getHeight());
         }
         velocity.set ((float)Math.random()*10+3, 0.0f);
     }

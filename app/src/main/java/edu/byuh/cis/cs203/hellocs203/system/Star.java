@@ -20,6 +20,7 @@ public class Star extends Sprite {
         super();
         this.di = di;
         bitmap = ImageCache.getCannonFire();
+        pos.set(0,0,bitmap.getWidth(),bitmap.getHeight());
         velocity.set(0.0f, 0.0f);
         isdraw = false;
     }

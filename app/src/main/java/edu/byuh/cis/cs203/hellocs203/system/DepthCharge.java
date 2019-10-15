@@ -13,6 +13,7 @@ public class DepthCharge extends Sprite {
     public DepthCharge() {
         super();
         bitmap = ImageCache.getDepthChargeImage();
+        pos.set(0,0,bitmap.getWidth(),bitmap.getHeight());
         velocity.set(0, 20.0f);
     }
 

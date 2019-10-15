@@ -17,6 +17,7 @@ import edu.byuh.cis.cs203.hellocs203.system.Airplane;
 import edu.byuh.cis.cs203.hellocs203.system.Battleship;
 import edu.byuh.cis.cs203.hellocs203.system.DepthCharge;
 import edu.byuh.cis.cs203.hellocs203.misc.Direction;
+import edu.byuh.cis.cs203.hellocs203.system.Enemy;
 import edu.byuh.cis.cs203.hellocs203.system.ImageCache;
 import edu.byuh.cis.cs203.hellocs203.system.Missile;
 import edu.byuh.cis.cs203.hellocs203.system.Star;
@@ -70,23 +71,27 @@ public class GameView extends View implements TickListener {
 
             if (init == false) {
                 ImageCache.init(getResources(),w,h);
+                Enemy.setwh(w,h);
                 battleship = new Battleship();
+                timer.subscribe(battleship);
                 water = BitmapFactory.decodeResource(getResources(), R.drawable.water);
                 for (int i=0; i<5; i++){
                     air.add(new Airplane());
+                    timer.subscribe(air.get(air.size()-1));
                     sub.add(new Submarine());
+                    timer.subscribe(sub.get(sub.size()-1));
                 }
 
                 for ( Airplane a : air ) {
-                    a.getH(h);
                     a.setPosition(w, (float)Math.random()*h/3);
                 }
                 for ( Submarine s : sub ) {
-                    s.getH(h);
                     s.setPosition(0, (float)Math.random()*h/3+2*h/3);
                 }
                 water = Bitmap.createScaledBitmap(water,
                         (int) watersize, (int) watersize, true);
+
+                timer.subscribe(this);
 
                 init = true;
             }
@@ -155,18 +160,23 @@ public class GameView extends View implements TickListener {
         if (m.getAction() == MotionEvent.ACTION_DOWN) {
             if (y>h/2) {
                 dech.add(new DepthCharge());
+                timer.subscribe(dech.get(dech.size()-1));
                 dech.get(dech.size()-1).setPosition(w/2, h/2);
 
             } else {
                 if (x>w/2){
                     mis.add(new Missile(Direction.LEFT_TO_RIGHT));
+                    timer.subscribe(mis.get(mis.size()-1));
                     mis.get(mis.size()-1).setPosition(w/2, h/2);
                     star.add(new Star(Direction.LEFT_TO_RIGHT));
+                    timer.subscribe(star.get(star.size()-1));
                     star.get(star.size()-1).setPosition(w/2, h/2);
                 } else {
                     mis.add(new Missile(Direction.RIGHT_TO_LEFT));
+                    timer.subscribe(mis.get(mis.size()-1));
                     mis.get(mis.size()-1).setPosition(w/2, h/2);
                     star.add(new Star(Direction.RIGHT_TO_LEFT));
+                    timer.subscribe(star.get(star.size()-1));
                     star.get(star.size()-1).setPosition(w/2, h/2);
                 }
             }

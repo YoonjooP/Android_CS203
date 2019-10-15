@@ -11,8 +11,7 @@ public abstract class Sprite implements TickListener{
     protected Bitmap bitmap;
     protected RectF pos;
     protected PointF velocity;
-    protected float screenWidth;
-    protected float screenHeight;
+
 
     /**
      * scale, position, draw
@@ -23,13 +22,6 @@ public abstract class Sprite implements TickListener{
     }
 
 
-    /**
-     * get screen height
-     * @param screenHeight
-     */
-    public void getH(float screenHeight){
-        this.screenHeight = screenHeight;
-    }
 
     /**
      * bitmap center

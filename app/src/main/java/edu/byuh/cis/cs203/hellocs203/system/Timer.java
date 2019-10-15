@@ -16,19 +16,20 @@ public class Timer extends Handler {
 
         }
 
-        public void subscibe (TickListener t) {
+        public void subscribe (TickListener t) {
             tili.add(t);
         }
 
-        public void unsubscibe (TickListener t) {
+        public void unsubscribe (TickListener t) {
             tili.remove(t);
         }
 
 
         @Override
         public void handleMessage (Message m) {
-
-
+            for ( TickListener t : tili) {
+                t.tick();
+            }
             sendMessageDelayed(obtainMessage(), 50);
 
         }

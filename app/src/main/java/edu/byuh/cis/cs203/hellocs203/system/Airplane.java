@@ -2,6 +2,7 @@ package edu.byuh.cis.cs203.hellocs203.system;
 
 import android.content.res.Resources;
 import android.graphics.BitmapFactory;
+import android.graphics.RectF;
 
 import edu.byuh.cis.cs203.hellocs203.R;
 import edu.byuh.cis.cs203.hellocs203.misc.Direction;
@@ -16,10 +17,13 @@ public class Airplane extends Enemy {
         double rannum = Math.random();
         if (rannum<0.33) {
             bitmap = ImageCache.getAirplaneImage(Size.BIG, Direction.LEFT_TO_RIGHT);
+            pos.set(0,0,bitmap.getWidth(),bitmap.getHeight());
         } else if (rannum>=0.33 && rannum <0.66) {
             bitmap = ImageCache.getAirplaneImage(Size.MEDIUM, Direction.LEFT_TO_RIGHT);
+            pos.set(0,0,bitmap.getWidth(),bitmap.getHeight());
         } else {
             bitmap = ImageCache.getAirplaneImage(Size.SMALL, Direction.LEFT_TO_RIGHT);
+            pos.set(0,0,bitmap.getWidth(),bitmap.getHeight());
         }
 
         velocity.set (-(float)Math.random()*10 -3, 0.0f);
