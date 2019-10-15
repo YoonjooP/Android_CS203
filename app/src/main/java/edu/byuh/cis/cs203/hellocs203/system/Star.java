@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 
 import edu.byuh.cis.cs203.hellocs203.R;
+import edu.byuh.cis.cs203.hellocs203.misc.Direction;
 
 public class Star extends Sprite {
 

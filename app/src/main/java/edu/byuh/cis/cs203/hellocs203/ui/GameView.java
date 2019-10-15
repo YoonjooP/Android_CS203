@@ -7,7 +7,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -17,7 +16,7 @@ import edu.byuh.cis.cs203.hellocs203.R;
 import edu.byuh.cis.cs203.hellocs203.system.Airplane;
 import edu.byuh.cis.cs203.hellocs203.system.Battleship;
 import edu.byuh.cis.cs203.hellocs203.system.DepthCharge;
-import edu.byuh.cis.cs203.hellocs203.system.Direction;
+import edu.byuh.cis.cs203.hellocs203.misc.Direction;
 import edu.byuh.cis.cs203.hellocs203.system.Missile;
 import edu.byuh.cis.cs203.hellocs203.system.Star;
 import edu.byuh.cis.cs203.hellocs203.system.Submarine;
@@ -58,7 +57,7 @@ public class GameView extends View {
         }
         water = BitmapFactory.decodeResource(getResources(), R.drawable.water);
 
-        Timer timer = new Timer();
+//        Timer timer = new Timer();
     }
         @Override
         /**
@@ -146,34 +145,34 @@ public class GameView extends View {
     /**
      * Inner class
      */
-    public class Timer extends Handler {
-
-        public Timer () {
-            sendMessageDelayed(obtainMessage(), 0);
-        }
-
-        @Override
-        public void handleMessage (Message m) {
-
-            for ( Airplane a : air ) {
-                a.move();
-            }
-            for ( Submarine s : sub ) {
-                s.move();
-            }
-            for ( Missile mi : mis ) {
-                mi.move();
-            }
-            for ( DepthCharge dc : dech ) {
-                dc.move();
-            }
-
-            invalidate();
-            sendMessageDelayed(obtainMessage(), 50);
-
-        }
-
-    }
+//    public class Timer extends Handler {
+//
+//        public Timer () {
+//            sendMessageDelayed(obtainMessage(), 0);
+//        }
+//
+//        @Override
+//        public void handleMessage (Message m) {
+//
+//            for ( Airplane a : air ) {
+//                a.move();
+//            }
+//            for ( Submarine s : sub ) {
+//                s.move();
+//            }
+//            for ( Missile mi : mis ) {
+//                mi.move();
+//            }
+//            for ( DepthCharge dc : dech ) {
+//                dc.move();
+//            }
+//
+//            invalidate();
+//            sendMessageDelayed(obtainMessage(), 50);
+//
+//        }
+//
+//    }
 
     @Override
     public boolean onTouchEvent(MotionEvent m) {

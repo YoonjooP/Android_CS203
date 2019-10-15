@@ -4,6 +4,7 @@ import android.content.res.Resources;
 import android.graphics.BitmapFactory;
 
 import edu.byuh.cis.cs203.hellocs203.R;
+import edu.byuh.cis.cs203.hellocs203.misc.Size;
 
 public class Airplane extends Enemy {
     /**

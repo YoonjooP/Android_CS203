@@ -1,6 +1,6 @@
 package edu.byuh.cis.cs203.hellocs203.system;
 
-import android.content.res.Resources;
+import edu.byuh.cis.cs203.hellocs203.misc.Size;
 
 
 public abstract class Enemy extends Sprite {

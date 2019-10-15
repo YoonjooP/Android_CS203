@@ -1,4 +1,4 @@
-package edu.byuh.cis.cs203.hellocs203.system;
+package edu.byuh.cis.cs203.hellocs203.misc;
 
 public enum Direction {
     LEFT_TO_RIGHT,

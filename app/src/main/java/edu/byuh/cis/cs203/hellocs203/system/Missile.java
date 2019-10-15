@@ -4,6 +4,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
+import edu.byuh.cis.cs203.hellocs203.misc.Direction;
+
 public class Missile extends Sprite {
 
     private Direction dir;
