@@ -126,6 +126,7 @@ public class GameView extends View implements TickListener {
             for (Star st : star) {
                 if (st.getIsdraw() == true) {
                     trashhh.add(st);
+                    timer.unsubscribe(st);
                 }
             }
             for (Star st : trashhh) {
@@ -135,6 +136,7 @@ public class GameView extends View implements TickListener {
             for (DepthCharge de : dech ) {
                 if (de.getPos().top>h){
                     trash.add(de);
+                    timer.unsubscribe(de);
                 }
             }
             for (DepthCharge de: trash) {
@@ -143,6 +145,7 @@ public class GameView extends View implements TickListener {
             for (Missile mi : mis ) {
                 if (mi.getPos().bottom<0) {
                     trashh.add(mi);
+                    timer.unsubscribe(mi);
                 }
             }
             for (Missile mi : trashh) {
