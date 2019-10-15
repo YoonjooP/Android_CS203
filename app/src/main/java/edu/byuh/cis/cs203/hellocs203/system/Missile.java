@@ -50,4 +50,8 @@ public class Missile extends Sprite {
         }
     }
 
+    @Override
+    public void tick() {
+        move();
+    }
 }

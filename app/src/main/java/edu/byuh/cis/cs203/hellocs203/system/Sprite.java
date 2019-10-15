@@ -7,7 +7,7 @@ import android.graphics.PointF;
 import android.graphics.RectF;
 
 
-public abstract class Sprite {
+public abstract class Sprite implements TickListener{
     protected Bitmap bitmap;
     protected RectF pos;
     protected PointF velocity;

@@ -9,11 +9,10 @@ public class DepthCharge extends Sprite {
     /**
      * scale, position, draw
      *
-     * @param r
      */
-    public DepthCharge(Resources r) {
+    public DepthCharge() {
         super();
-        bitmap = BitmapFactory.decodeResource(r, R.drawable.depth_charge);
+        bitmap = ImageCache.getDepthChargeImage();
         velocity.set(0, 20.0f);
     }
 
@@ -22,5 +21,10 @@ public class DepthCharge extends Sprite {
     public void setPosition(float x, float y) {
             pos.offsetTo(x-pos.width()/2, y-pos.height()/2+50);
 
+    }
+
+    @Override
+    public void tick() {
+        move();
     }
 }

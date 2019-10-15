@@ -17,9 +17,9 @@ public class Airplane extends Enemy {
         if (rannum<0.33) {
             bitmap = ImageCache.getAirplaneImage(Size.BIG, Direction.LEFT_TO_RIGHT);
         } else if (rannum>=0.33 && rannum <0.66) {
-            bitmap = BitmapFactory.decodeResource(r, R.drawable.medium_airplane);
+            bitmap = ImageCache.getAirplaneImage(Size.MEDIUM, Direction.LEFT_TO_RIGHT);
         } else {
-            bitmap = BitmapFactory.decodeResource(r, R.drawable.little_airplane);
+            bitmap = ImageCache.getAirplaneImage(Size.SMALL, Direction.LEFT_TO_RIGHT);
         }
 
         velocity.set (-(float)Math.random()*10 -3, 0.0f);
@@ -37,4 +37,8 @@ public class Airplane extends Enemy {
     }
 
 
+    @Override
+    public void tick() {
+        move();
+    }
 }

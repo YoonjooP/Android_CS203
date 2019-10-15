@@ -21,8 +21,9 @@ import edu.byuh.cis.cs203.hellocs203.system.ImageCache;
 import edu.byuh.cis.cs203.hellocs203.system.Missile;
 import edu.byuh.cis.cs203.hellocs203.system.Star;
 import edu.byuh.cis.cs203.hellocs203.system.Submarine;
+import edu.byuh.cis.cs203.hellocs203.system.TickListener;
 
-public class GameView extends View {
+public class GameView extends View implements TickListener {
 
 
     private Battleship battleship;
@@ -69,11 +70,11 @@ public class GameView extends View {
 
             if (init == false) {
                 ImageCache.init(getResources(),w,h);
-                battleship = new Battleship(getResources());
+                battleship = new Battleship();
                 water = BitmapFactory.decodeResource(getResources(), R.drawable.water);
                 for (int i=0; i<5; i++){
-                    air.add(new Airplane(getResources()));
-                    sub.add(new Submarine(getResources()));
+                    air.add(new Airplane());
+                    sub.add(new Submarine());
                 }
 
                 for ( Airplane a : air ) {
@@ -183,19 +184,19 @@ public class GameView extends View {
         float y = m.getY();
         if (m.getAction() == MotionEvent.ACTION_DOWN) {
             if (y>h/2) {
-                dech.add(new DepthCharge(getResources()));
+                dech.add(new DepthCharge());
                 dech.get(dech.size()-1).setPosition(w/2, h/2);
 
             } else {
                 if (x>w/2){
                     mis.add(new Missile(Direction.LEFT_TO_RIGHT));
                     mis.get(mis.size()-1).setPosition(w/2, h/2);
-                    star.add(new Star(getResources(),Direction.LEFT_TO_RIGHT));
+                    star.add(new Star(Direction.LEFT_TO_RIGHT));
                     star.get(star.size()-1).setPosition(w/2, h/2);
                 } else {
                     mis.add(new Missile(Direction.RIGHT_TO_LEFT));
                     mis.get(mis.size()-1).setPosition(w/2, h/2);
-                    star.add(new Star(getResources(),Direction.RIGHT_TO_LEFT));
+                    star.add(new Star(Direction.RIGHT_TO_LEFT));
                     star.get(star.size()-1).setPosition(w/2, h/2);
                 }
             }
@@ -205,4 +206,8 @@ public class GameView extends View {
         return true;
     }
 
+    @Override
+    public void tick() {
+        invalidate();
+    }
 }

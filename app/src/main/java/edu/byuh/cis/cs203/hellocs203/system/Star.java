@@ -9,20 +9,17 @@ import edu.byuh.cis.cs203.hellocs203.misc.Direction;
 
 public class Star extends Sprite {
 
-    private Resources r;
     private Direction di;
     private boolean isdraw;
 
     /**
      * star
-     * @param r resources
      * @param di direction
      */
-    public Star(Resources r, Direction di) {
+    public Star(Direction di) {
         super();
-        this.r = r;
         this.di = di;
-        bitmap = BitmapFactory.decodeResource(r, R.drawable.star);
+        bitmap = ImageCache.getCannonFire();
         velocity.set(0.0f, 0.0f);
         isdraw = false;
     }
@@ -45,5 +42,10 @@ public class Star extends Sprite {
 
     public boolean getIsdraw() {
         return isdraw;
+    }
+
+    @Override
+    public void tick() {
+        move();
     }
 }
