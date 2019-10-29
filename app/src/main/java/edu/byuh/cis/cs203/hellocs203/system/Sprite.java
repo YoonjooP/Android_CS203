@@ -51,4 +51,9 @@ public abstract class Sprite implements TickListener{
     public RectF getPos() {
         return pos;
     }
+
+    public boolean overlaps (Sprite other) {
+        return RectF.intersects(this.pos, other.pos);
+    }
+
 }

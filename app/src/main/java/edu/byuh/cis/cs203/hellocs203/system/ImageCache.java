@@ -49,8 +49,8 @@ public class ImageCache {
         submarine_big_right2left = loadAndScale(res, R.drawable.big_submarine, w*0.1f);
         depth_charge = loadAndScale(res, R.drawable.depth_charge, w*0.025f);
         pop = loadAndScale(res, R.drawable.star, w*0.05f);
-//        explosion_airplane = loadAndScale(res, R.drawable.airplane_explosion, w*0.12f);
-//        explosion_submarine = loadAndScale(res, R.drawable.submarine_explosion, w*0.12f);
+        explosion_airplane = loadAndScale(res, R.drawable.airplane_explosion, w*0.12f);
+        explosion_submarine = loadAndScale(res, R.drawable.submarine_explosion, w*0.12f);
     }
 
     private static Bitmap loadAndScale(Resources res, int id, float newWidth) {
