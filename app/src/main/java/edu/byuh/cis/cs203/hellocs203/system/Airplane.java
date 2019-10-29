@@ -17,23 +17,23 @@ public class Airplane extends Enemy {
      */
     public Airplane() {
         super();
-        double rannum = Math.random();
-        if (rannum<0.33) {
-            size = Size.BIG;
-        } else if (rannum>=0.33 && rannum <0.66) {
-            size = Size.MEDIUM;
-        } else {
-            size = Size.SMALL;
-        }
+//        double rannum = Math.random();
+//        if (rannum<0.33) {
+//            size = Size.BIG;
+//        } else if (rannum <0.66) {
+//            size = Size.MEDIUM;
+//        } else {
+//            size = Size.SMALL;
+//        }
 
         bitmap = ImageCache.getAirplaneImage(size, dir);
         pos.set(0,0,bitmap.getWidth(),bitmap.getHeight());
 
-        if (dir == Direction.RIGHT_TO_LEFT) {
-            velocity.set(-(float) Math.random() * 10 - 3, 0.0f);
-        } else {
-            velocity.set((float) Math.random() * 10 - 3, 0.0f);
-        }
+//        if (dir == Direction.RIGHT_TO_LEFT) {
+//            velocity.set(-(float) Math.random() * 10 - 3, 0.0f);
+//        } else {
+//            velocity.set((float) Math.random() * 10 - 3, 0.0f);
+//        }
     }
 
 

@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.util.Log;
 
 import edu.byuh.cis.cs203.hellocs203.misc.Direction;
+import edu.byuh.cis.cs203.hellocs203.misc.Size;
 
 public abstract class Enemy extends Sprite {
 
@@ -12,6 +13,7 @@ public abstract class Enemy extends Sprite {
     protected static float screenHeight;
     protected Direction dir;
     boolean exploding;
+    protected Size size;
 
 
     /**
@@ -45,8 +47,36 @@ public abstract class Enemy extends Sprite {
         exploding = true;
     }
 
+    public boolean getExploded() {
+        return exploding;
+    }
+
+    public void setExploded() {
+        exploding = false;
+    }
+
     public void reset() {
         double rannum = Math.random();
+        if (rannum<0.33) {
+            size = Size.BIG;
+        } else if (rannum <0.66) {
+            size = Size.MEDIUM;
+        } else {
+            size = Size.SMALL;
+        }
+
+        double rn = Math.random();
+        if (rn < 0.5) {
+            dir = Direction.LEFT_TO_RIGHT;
+        } else {
+            dir = Direction.RIGHT_TO_LEFT;
+        }
+
+        if (dir == Direction.RIGHT_TO_LEFT) {
+            velocity.set(-(float) Math.random() * 10 - 3, 0.0f);
+        } else {
+            velocity.set((float) Math.random() * 10 - 3, 0.0f);
+        }
 
     }
 

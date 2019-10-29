@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Handler;
 import android.os.Message;
 import android.view.MotionEvent;
@@ -43,6 +44,7 @@ public class GameView extends View implements TickListener {
     float w;
     float h;
     private Timer timer;
+    private int score;
 
     /**
      * game view constructor
@@ -121,6 +123,24 @@ public class GameView extends View implements TickListener {
             for ( DepthCharge dc : dech ) {
                 dc.draw(c);
             }
+            Paint p = new Paint();
+            p.setColor(Color.BLACK);
+            p.setTextSize(70.0F);
+            c.drawText("Score :"+score, 50, h/2+100, p);
+
+            for (Airplane a : air) {
+                if (a.getExploded()) {
+                    score += a.getPointValue();
+                    a.reset();
+                }
+            }
+            for (Submarine s : sub ) {
+                if(s.getExploded()){
+                    score += s.getPointValue();
+                    s.reset();
+                }
+            }
+
             trash = new ArrayList<>();
             trashh = new ArrayList<>();
             trashhh = new ArrayList<>();
@@ -226,5 +246,9 @@ public class GameView extends View implements TickListener {
             }
         }
         traash.clear();
+    }
+
+    public void getPoitnValue() {
+
     }
 }

@@ -19,23 +19,23 @@ public class Submarine extends Enemy {
      */
     public Submarine() {
         super();
-        double rannum = random();
-        if (rannum<0.33) {
-            size = Size.BIG;
-        } else if (rannum>=0.33 && rannum <0.66) {
-            size = Size.MEDIUM;
-        } else {
-            size = size.SMALL;
-        }
+//        double rannum = random();
+//        if (rannum<0.33) {
+//            size = Size.BIG;
+//        } else if (rannum <0.66) {
+//            size = Size.MEDIUM;
+//        } else {
+//            size = size.SMALL;
+//        }
 
         bitmap = ImageCache.getSubmarineImage(size, dir);
         pos.set(0,0,bitmap.getWidth(),bitmap.getHeight());
 
-        if (dir == Direction.LEFT_TO_RIGHT) {
-            velocity.set((float) Math.random() * 10 + 3, 0.0f);
-        } else {
-            velocity.set(-(float) Math.random() * 10 + 3, 0.0f);
-        }
+//        if (dir == Direction.LEFT_TO_RIGHT) {
+//            velocity.set((float) Math.random() * 10 + 3, 0.0f);
+//        } else {
+//            velocity.set(-(float) Math.random() * 10 + 3, 0.0f);
+//        }
     }
 
     @Override
