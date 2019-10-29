@@ -20,6 +20,7 @@ import edu.byuh.cis.cs203.hellocs203.misc.Direction;
 import edu.byuh.cis.cs203.hellocs203.system.Enemy;
 import edu.byuh.cis.cs203.hellocs203.system.ImageCache;
 import edu.byuh.cis.cs203.hellocs203.system.Missile;
+import edu.byuh.cis.cs203.hellocs203.system.Sprite;
 import edu.byuh.cis.cs203.hellocs203.system.Star;
 import edu.byuh.cis.cs203.hellocs203.system.Submarine;
 import edu.byuh.cis.cs203.hellocs203.system.TickListener;
@@ -152,6 +153,10 @@ public class GameView extends View implements TickListener {
                 mis.remove(mi);
             }
 
+            trash.clear();
+            trashh.clear();
+            trashhh.clear();
+
         }
 
 
@@ -192,5 +197,34 @@ public class GameView extends View implements TickListener {
     @Override
     public void tick() {
         invalidate();
+        detectCollisions();
+    }
+
+    public void detectCollisions() {
+        ArrayList<Sprite> traash = new ArrayList<>();
+        for (Missile m : mis) {
+            for (Airplane a : air) {
+                if (m.overlaps(a)) {
+                    a.explode();
+                    traash.add(m);
+                }
+            }
+            for (Sprite s : traash) {
+                mis.remove(s);
+            }
+        }
+        traash.clear();
+        for (DepthCharge d : dech) {
+            for (Submarine s : sub) {
+                if (d.overlaps(s)){
+                    s.explode();
+                    traash.add(s);
+                }
+            }
+            for (Sprite s : traash) {
+                dech.remove(s);
+            }
+        }
+        traash.clear();
     }
 }
