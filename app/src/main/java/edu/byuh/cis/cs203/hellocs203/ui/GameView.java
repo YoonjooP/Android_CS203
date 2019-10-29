@@ -132,12 +132,14 @@ public class GameView extends View implements TickListener {
                 if (a.getExploded()) {
                     score += a.getPointValue();
                     a.reset();
+                    a.setExploded();
                 }
             }
             for (Submarine s : sub ) {
                 if(s.getExploded()){
                     score += s.getPointValue();
                     s.reset();
+                    s.setExploded();
                 }
             }
 

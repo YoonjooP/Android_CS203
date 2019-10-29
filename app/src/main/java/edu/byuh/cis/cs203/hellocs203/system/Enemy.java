@@ -2,6 +2,7 @@ package edu.byuh.cis.cs203.hellocs203.system;
 
 
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.util.Log;
 
 import edu.byuh.cis.cs203.hellocs203.misc.Direction;
@@ -97,4 +98,6 @@ public abstract class Enemy extends Sprite {
     public abstract Bitmap getExplodingImage();
 
     public abstract int getPointValue();
+
+
 }
