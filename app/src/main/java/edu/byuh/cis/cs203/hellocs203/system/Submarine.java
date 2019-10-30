@@ -13,7 +13,6 @@ import static java.lang.Math.random;
 
 public class Submarine extends Enemy {
 
-    Size size;
     /**
      * submarine
      */
@@ -40,16 +39,19 @@ public class Submarine extends Enemy {
     @Override
     public void move() {
         super.move();
-        if (dir == Direction.LEFT_TO_RIGHT) {
-            if (pos.left > screenWidth) {
-                pos.offsetTo(-250, (float) Math.random() * screenHeight / 3 + screenHeight * 2 / 3);
-            }
-
-        } else {
-            if (pos.right < 0) {
-                pos.offsetTo(screenWidth, (float) Math.random() * screenHeight / 3 + screenHeight * 2 / 3);
-            }
-
+        if (pos.left > screenWidth) {
+            reset();
+            bitmap=ImageCache.getSubmarineImage(size,dir);
+            this.pos.set(0,0,bitmap.getWidth(), bitmap.getHeight());
+            pos.offsetTo(-250, (float) Math.random() * screenHeight / 3 + screenHeight * 2 / 3 - 70);
+        } else if (pos.right < -250) {
+            reset();
+            bitmap=ImageCache.getSubmarineImage(size,dir);
+            this.pos.set(0,0,bitmap.getWidth(), bitmap.getHeight());
+            pos.offsetTo(screenWidth, (float) Math.random() * screenHeight / 3 + screenHeight * 2 / 3 - 70);
+        }
+        if(pos.top < screenHeight/2) {
+            pos.offsetTo(-250, (float) Math.random() * screenHeight / 3 + screenHeight * 2 / 3 - 70);
         }
     }
 
@@ -73,4 +75,5 @@ public class Submarine extends Enemy {
             return 150;
         }
     }
+
 }

@@ -23,15 +23,7 @@ public abstract class Enemy extends Sprite {
     public Enemy() {
         super();
         exploding = false;
-        double ran = Math.random();
-        if (ran<0.5) {
-            dir = Direction.LEFT_TO_RIGHT;
-        } else {
-            dir = Direction.RIGHT_TO_LEFT;
-        }
-
         reset();
-
     }
 
 
@@ -39,13 +31,30 @@ public abstract class Enemy extends Sprite {
     @Override
     public void move() {
         super.move();
-        randomizeSpeed();
+        if (Math.random()<0.1) {
+            setRandomSpeed();
+        }
     }
 
     public void explode() {
         bitmap = getExplodingImage();
         exploding = true;
         velocity.set(0.0f, 0.0f);
+    }
+
+    @Override
+    public void draw(Canvas c) {
+        super.draw(c);
+        if (exploding == true) {
+            exploding = false;
+            reset();
+            if(this instanceof  Airplane){
+                this.bitmap = ImageCache.getAirplaneImage(size, dir);
+            } else {
+                this.bitmap = ImageCache.getSubmarineImage(size, dir);
+            }
+            this.pos.set(0,0,bitmap.getWidth(), bitmap.getHeight());
+        }
     }
 
     public boolean getExploded() {
@@ -74,10 +83,12 @@ public abstract class Enemy extends Sprite {
         }
 
         if (dir == Direction.RIGHT_TO_LEFT) {
-            velocity.set(-(float) Math.random() * 10 - 3, 0.0f);
+            velocity.x = -1;
         } else {
-            velocity.set((float) Math.random() * 10 - 3, 0.0f);
+            velocity.x = 1;
         }
+        //Log.d("direction", dir+" "+Float.toString(velocity.x));
+        setRandomSpeed();
 
     }
 
@@ -86,17 +97,12 @@ public abstract class Enemy extends Sprite {
         screenHeight = h;
     }
 
-    public void randomizeSpeed() {
-        if (Math.random()<0.1) {
-            float v = (float)((Math.random()*15+6) * Math.signum(velocity.x));
-            velocity.set(v, 0);
-        }
-
-
+    public void setRandomSpeed() {
+        float v = (float)((Math.random()*15+6) * Math.signum(velocity.x));
+        velocity.set(v, 0);
     }
 
     public abstract Bitmap getExplodingImage();
-
     public abstract int getPointValue();
 
 

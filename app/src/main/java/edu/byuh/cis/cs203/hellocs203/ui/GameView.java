@@ -78,7 +78,7 @@ public class GameView extends View implements TickListener {
                 battleship = new Battleship();
                 timer.subscribe(battleship);
                 water = BitmapFactory.decodeResource(getResources(), R.drawable.water);
-                for (int i=0; i<5; i++){
+                for (int i=0; i<10; i++){
                     air.add(new Airplane());
                     timer.subscribe(air.get(air.size()-1));
                     sub.add(new Submarine());
@@ -127,21 +127,6 @@ public class GameView extends View implements TickListener {
             p.setColor(Color.BLACK);
             p.setTextSize(70.0F);
             c.drawText("Score :"+score, 50, h/2+100, p);
-
-            for (Airplane a : air) {
-                if (a.getExploded()) {
-                    score += a.getPointValue();
-                    a.reset();
-                    a.setExploded();
-                }
-            }
-            for (Submarine s : sub ) {
-                if(s.getExploded()){
-                    score += s.getPointValue();
-                    s.reset();
-                    s.setExploded();
-                }
-            }
 
             trash = new ArrayList<>();
             trashh = new ArrayList<>();
@@ -231,11 +216,12 @@ public class GameView extends View implements TickListener {
                     traash.add(m);
                 }
             }
-            for (Sprite s : traash) {
-                mis.remove(s);
-            }
+        }
+        for (Sprite s : traash) {
+            mis.remove(s);
         }
         traash.clear();
+
         for (DepthCharge d : dech) {
             for (Submarine s : sub) {
                 if (d.overlaps(s)){
@@ -243,14 +229,11 @@ public class GameView extends View implements TickListener {
                     traash.add(s);
                 }
             }
-            for (Sprite s : traash) {
-                dech.remove(s);
-            }
+        }
+        for (Sprite s : traash) {
+            dech.remove(s);
         }
         traash.clear();
     }
 
-    public void getPoitnValue() {
-
-    }
 }

@@ -11,44 +11,34 @@ import edu.byuh.cis.cs203.hellocs203.misc.Size;
 
 public class Airplane extends Enemy {
 
-    Size size;
     /**
      * airplane
      */
     public Airplane() {
         super();
-//        double rannum = Math.random();
-//        if (rannum<0.33) {
-//            size = Size.BIG;
-//        } else if (rannum <0.66) {
-//            size = Size.MEDIUM;
-//        } else {
-//            size = Size.SMALL;
-//        }
-
         bitmap = ImageCache.getAirplaneImage(size, dir);
+
         pos.set(0,0,bitmap.getWidth(),bitmap.getHeight());
-//        if (dir == Direction.RIGHT_TO_LEFT) {
-//            velocity.set(-(float) Math.random() * 10 - 3, 0.0f);
-//        } else {
-//            velocity.set((float) Math.random() * 10 - 3, 0.0f);
-//        }
     }
 
 
     @Override
     public void move() {
         super.move();
-        if (dir == Direction.RIGHT_TO_LEFT) {
-            if (pos.right < -250) {
-                pos.offsetTo(screenWidth, (float) Math.random() * screenHeight / 3);
-            }
-        } else {
-            if (pos.left >screenWidth) {
-                pos.offsetTo(0, (float) Math.random() * screenHeight / 3);
-            }
+        if (pos.right < -250) {
+            reset();
+            bitmap = ImageCache.getAirplaneImage(size,dir);
+            this.pos.set(0,0,bitmap.getWidth(), bitmap.getHeight());
+            pos.offsetTo(screenWidth, (float) Math.random() * screenHeight / 3);
+        } else if (pos.left >screenWidth) {
+            reset();
+            bitmap = ImageCache.getAirplaneImage(size,dir);
+            this.pos.set(0,0,bitmap.getWidth(), bitmap.getHeight());
+            pos.offsetTo(-250, (float) Math.random() * screenHeight / 3);
         }
-
+        if(pos.top > screenHeight/2) {
+            pos.offsetTo(screenWidth, (float) Math.random() * screenHeight / 3+70);
+        }
     }
 
 
