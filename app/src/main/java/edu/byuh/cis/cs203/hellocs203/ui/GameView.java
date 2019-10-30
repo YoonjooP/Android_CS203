@@ -212,6 +212,7 @@ public class GameView extends View implements TickListener {
         for (Missile m : mis) {
             for (Airplane a : air) {
                 if (m.overlaps(a)) {
+                    score += a.getPointValue();
                     a.explode();
                     traash.add(m);
                 }
@@ -225,6 +226,7 @@ public class GameView extends View implements TickListener {
         for (DepthCharge d : dech) {
             for (Submarine s : sub) {
                 if (d.overlaps(s)){
+                    score += s.getPointValue();
                     s.explode();
                     traash.add(s);
                 }
