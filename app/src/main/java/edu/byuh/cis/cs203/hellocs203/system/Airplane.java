@@ -28,7 +28,6 @@ public class Airplane extends Enemy {
 
         bitmap = ImageCache.getAirplaneImage(size, dir);
         pos.set(0,0,bitmap.getWidth(),bitmap.getHeight());
-
 //        if (dir == Direction.RIGHT_TO_LEFT) {
 //            velocity.set(-(float) Math.random() * 10 - 3, 0.0f);
 //        } else {
@@ -61,6 +60,7 @@ public class Airplane extends Enemy {
     @Override
     public Bitmap getExplodingImage(){
         return ImageCache.getAirplaneExposion();
+
     }
 
     @Override

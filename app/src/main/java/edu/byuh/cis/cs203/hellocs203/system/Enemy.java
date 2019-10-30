@@ -22,7 +22,7 @@ public abstract class Enemy extends Sprite {
      */
     public Enemy() {
         super();
-
+        exploding = false;
         double ran = Math.random();
         if (ran<0.5) {
             dir = Direction.LEFT_TO_RIGHT;
@@ -44,8 +44,8 @@ public abstract class Enemy extends Sprite {
 
     public void explode() {
         bitmap = getExplodingImage();
-        velocity.x = 0;
         exploding = true;
+        velocity.set(0.0f, 0.0f);
     }
 
     public boolean getExploded() {
