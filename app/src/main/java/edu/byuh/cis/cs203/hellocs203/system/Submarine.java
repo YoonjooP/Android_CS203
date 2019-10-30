@@ -18,24 +18,13 @@ public class Submarine extends Enemy {
      */
     public Submarine() {
         super();
-//        double rannum = random();
-//        if (rannum<0.33) {
-//            size = Size.BIG;
-//        } else if (rannum <0.66) {
-//            size = Size.MEDIUM;
-//        } else {
-//            size = size.SMALL;
-//        }
-
         bitmap = ImageCache.getSubmarineImage(size, dir);
         pos.set(0,0,bitmap.getWidth(),bitmap.getHeight());
-//        if (dir == Direction.LEFT_TO_RIGHT) {
-//            velocity.set((float) Math.random() * 10 + 3, 0.0f);
-//        } else {
-//            velocity.set(-(float) Math.random() * 10 + 3, 0.0f);
-//        }
     }
 
+    /**
+     * reset submarine
+     */
     @Override
     public void move() {
         super.move();
@@ -55,16 +44,27 @@ public class Submarine extends Enemy {
         }
     }
 
+    /**
+     * tick
+     */
     @Override
     public void tick() {
         move();
     }
 
+    /**
+     *
+     * @return get the image of explosion
+     */
     @Override
     public Bitmap getExplodingImage() {
         return ImageCache.getSubmarineExplosion();
     }
 
+    /**
+     * the score of each size
+     * @return
+     */
     @Override
     public int getPointValue() {
         if (size == Size.BIG) {

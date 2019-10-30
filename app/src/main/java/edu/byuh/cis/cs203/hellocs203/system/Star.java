@@ -25,7 +25,11 @@ public class Star extends Sprite {
         isdraw = false;
     }
 
-
+    /**
+     * star position
+     * @param x center
+     * @param y center
+     */
     @Override
     public void setPosition(float x, float y) {
         if (di == Direction.LEFT_TO_RIGHT){
@@ -35,16 +39,27 @@ public class Star extends Sprite {
         }
     }
 
+    /**
+     * draw
+     * @param c canvas
+     */
     @Override
     public void draw(Canvas c) {
         super.draw(c);
         isdraw = true;
     }
 
+    /**
+     *
+     * @return boolean isdraw
+     */
     public boolean getIsdraw() {
         return isdraw;
     }
 
+    /**
+     * tick
+     */
     @Override
     public void tick() {
         move();

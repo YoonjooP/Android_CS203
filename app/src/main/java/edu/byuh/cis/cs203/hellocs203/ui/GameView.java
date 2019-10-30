@@ -167,7 +167,11 @@ public class GameView extends View implements TickListener {
         }
 
 
-
+    /**
+     * on touch event
+     * @param m motion event
+     * @return boolean true
+     */
     @Override
     public boolean onTouchEvent(MotionEvent m) {
         float x = m.getX();
@@ -201,12 +205,18 @@ public class GameView extends View implements TickListener {
         return true;
     }
 
+    /**
+     * tick
+     */
     @Override
     public void tick() {
         invalidate();
         detectCollisions();
     }
 
+    /**
+     * when the sprites overlapped
+     */
     public void detectCollisions() {
         ArrayList<Sprite> traash = new ArrayList<>();
         for (Missile m : mis) {
@@ -228,7 +238,7 @@ public class GameView extends View implements TickListener {
                 if (d.overlaps(s)){
                     score += s.getPointValue();
                     s.explode();
-                    traash.add(s);
+                    traash.add(d);
                 }
             }
         }

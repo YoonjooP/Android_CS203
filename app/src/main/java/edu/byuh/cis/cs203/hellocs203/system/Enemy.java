@@ -27,7 +27,9 @@ public abstract class Enemy extends Sprite {
     }
 
 
-
+    /**
+     * set random speed 1/10
+     */
     @Override
     public void move() {
         super.move();
@@ -36,12 +38,19 @@ public abstract class Enemy extends Sprite {
         }
     }
 
+    /**
+     * explode method
+     */
     public void explode() {
         bitmap = getExplodingImage();
         exploding = true;
         velocity.set(0.0f, 0.0f);
     }
 
+    /**
+     * draw bitmap again when they explode
+     * @param c
+     */
     @Override
     public void draw(Canvas c) {
         super.draw(c);
@@ -57,14 +66,17 @@ public abstract class Enemy extends Sprite {
         }
     }
 
-    public boolean getExploded() {
-        return exploding;
-    }
+//    public boolean getExploded() {
+//        return exploding;
+//    }
+//
+//    public void setExploded() {
+//        exploding = false;
+//    }
 
-    public void setExploded() {
-        exploding = false;
-    }
-
+    /**
+     * reset everything
+     */
     public void reset() {
         double rannum = Math.random();
         if (rannum<0.33) {
@@ -92,11 +104,19 @@ public abstract class Enemy extends Sprite {
 
     }
 
+    /**
+     *
+     * @param w screen width
+     * @param h screen height
+     */
     public static void setwh(float w, float h) {
         screenWidth = w;
         screenHeight = h;
     }
 
+    /**
+     * set random speed method
+     */
     public void setRandomSpeed() {
         float v = (float)((Math.random()*15+6) * Math.signum(velocity.x));
         velocity.set(v, 0);

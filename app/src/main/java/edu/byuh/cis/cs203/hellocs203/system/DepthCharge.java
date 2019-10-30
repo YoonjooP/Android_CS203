@@ -17,13 +17,20 @@ public class DepthCharge extends Sprite {
         velocity.set(0, 20.0f);
     }
 
-
+    /**
+     *
+     * @param x center
+     * @param y center
+     */
     @Override
     public void setPosition(float x, float y) {
             pos.offsetTo(x-pos.width()/2, y-pos.height()/2+50);
 
     }
 
+    /**
+     * tick
+     */
     @Override
     public void tick() {
         move();

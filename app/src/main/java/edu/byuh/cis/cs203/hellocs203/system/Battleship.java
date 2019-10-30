@@ -17,6 +17,9 @@ public class Battleship extends Sprite {
         velocity.set(0.0f, 0.0f);
     }
 
+    /**
+     * tick
+     */
     @Override
     public void tick() {
         move();

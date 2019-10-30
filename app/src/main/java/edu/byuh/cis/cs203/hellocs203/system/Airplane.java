@@ -21,7 +21,9 @@ public class Airplane extends Enemy {
         pos.set(0,0,bitmap.getWidth(),bitmap.getHeight());
     }
 
-
+    /**
+     * reset sprite
+     */
     @Override
     public void move() {
         super.move();
@@ -41,18 +43,28 @@ public class Airplane extends Enemy {
         }
     }
 
-
+    /**
+     * tick
+     */
     @Override
     public void tick() {
         move();
     }
 
+    /**
+     *
+     * @return exploding image
+     */
     @Override
     public Bitmap getExplodingImage(){
         return ImageCache.getAirplaneExposion();
 
     }
 
+    /**
+     *
+     * @return each score for the size
+     */
     @Override
     public int getPointValue() {
         if (size == Size.BIG) {

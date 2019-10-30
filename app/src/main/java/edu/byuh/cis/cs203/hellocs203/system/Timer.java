@@ -18,16 +18,27 @@ public class Timer extends Handler {
 
         }
 
-        public void subscribe (TickListener t) {
+    /**
+     * subscribe
+     * @param t ticklistner
+     */
+    public void subscribe (TickListener t) {
             tili.add(t);
         }
 
-        public void unsubscribe (TickListener t) {
+    /**
+     * unsubscribe
+     * @param t ticklistener
+     */
+    public void unsubscribe (TickListener t) {
             tili.remove(t);
         }
 
-
-        @Override
+    /**
+     * handle message
+     * @param m message
+     */
+    @Override
         public void handleMessage (Message m) {
             for ( TickListener t : tili) {
                 t.tick();

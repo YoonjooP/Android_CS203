@@ -25,6 +25,10 @@ public class Missile extends Sprite {
         }
     }
 
+    /**
+     * draw missile
+     * @param c canvas
+     */
     @Override
     public void draw(Canvas c) {
         Paint pinkPaint = new Paint();
@@ -41,6 +45,11 @@ public class Missile extends Sprite {
 
     }
 
+    /**
+     * set position method for missile
+     * @param x start point
+     * @param y start point
+     */
     @Override
     public void setPosition(float x, float y) {
         if (dir == Direction.LEFT_TO_RIGHT){
@@ -50,6 +59,9 @@ public class Missile extends Sprite {
         }
     }
 
+    /**
+     * tick
+     */
     @Override
     public void tick() {
         move();
