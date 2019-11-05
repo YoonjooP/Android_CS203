@@ -45,6 +45,8 @@ public class GameView extends View implements TickListener {
     float h;
     private Timer timer;
     private int score;
+    int countdown = 10;
+    long timeBefore, timeNow;
 
     /**
      * game view constructor
@@ -127,6 +129,12 @@ public class GameView extends View implements TickListener {
             p.setColor(Color.BLACK);
             p.setTextSize(70.0F);
             c.drawText("Score :"+score, 50, h/2+100, p);
+
+            if (countdown%60 <10) {
+                c.drawText("Time: " + countdown/60 + ":0" + countdown%60, w-400, h/2+100, p);
+            } else {
+                c.drawText("Time: " + countdown/60 + ":" + countdown%60, w-400, h/2+100, p);
+            }
 
             trash = new ArrayList<>();
             trashh = new ArrayList<>();
@@ -212,6 +220,15 @@ public class GameView extends View implements TickListener {
     public void tick() {
         invalidate();
         detectCollisions();
+
+        timeNow = System.currentTimeMillis();
+        if (countdown != 0) {
+            if (timeNow - timeBefore > 1000) {
+                countdown--;
+                timeBefore = timeNow;
+            }
+        }
+
     }
 
     /**
