@@ -8,12 +8,14 @@ import java.util.ArrayList;
 public class Timer extends Handler {
 
     ArrayList<TickListener> tili;
+    boolean gameover;
     /**
      * Handler subclass timer
      */
     public Timer () {
 
         tili = new ArrayList<>();
+        gameover = false;
         sendMessageDelayed(obtainMessage(), 0);
 
         }
@@ -24,6 +26,10 @@ public class Timer extends Handler {
      */
     public void subscribe (TickListener t) {
             tili.add(t);
+        }
+
+        public void setGameover () {
+        gameover = true;
         }
 
     /**
@@ -42,6 +48,9 @@ public class Timer extends Handler {
         public void handleMessage (Message m) {
             for ( TickListener t : tili) {
                 t.tick();
+            }
+            if (gameover == true) {
+                tili.clear();
             }
             sendMessageDelayed(obtainMessage(), 50);
 
