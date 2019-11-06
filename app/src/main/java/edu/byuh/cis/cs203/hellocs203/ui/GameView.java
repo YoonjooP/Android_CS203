@@ -231,11 +231,10 @@ public class GameView extends View implements TickListener {
                             sub.clear();
                             mis.clear();
                             dech.clear();
-                            countdown = 180;
+                            countdown = 10;
                             score = 0;
                             resetGame();
-//                            loadScore();
-
+                            loadScore();
                     })
                     .setNegativeButton("No!", new DialogInterface.OnClickListener() {
                         @Override
@@ -325,7 +324,11 @@ public class GameView extends View implements TickListener {
             FileInputStream fis = getContext().openFileInput("score.txt");
             Scanner s = new Scanner(fis);
             String lana = s.nextLine();
-            score = Integer.parseInt(lana);
+            int highscore = Integer.parseInt(lana);
+            if (score > highscore) {
+                //annai message
+                saveScore();
+            }
             s.close();
         } catch (FileNotFoundException e) {
             score = 0;
