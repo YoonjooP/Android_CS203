@@ -28,9 +28,11 @@ public class Timer extends Handler {
             tili.add(t);
         }
 
-        public void setGameover () {
+    public void setGameover () {
         gameover = true;
         }
+
+        public void setGameNotover () { gameover = false;}
 
     /**
      * unsubscribe

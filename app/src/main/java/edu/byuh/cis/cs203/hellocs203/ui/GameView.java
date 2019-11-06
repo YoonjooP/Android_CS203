@@ -1,6 +1,9 @@
 package edu.byuh.cis.cs203.hellocs203.ui;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -68,6 +71,8 @@ public class GameView extends View implements TickListener {
         /**
          * drawing pictures
          */
+
+
         public void onDraw (Canvas c){
         // screen size
             w = c.getWidth();
@@ -75,29 +80,7 @@ public class GameView extends View implements TickListener {
             float watersize = w * 0.02f;
 
             if (init == false) {
-                ImageCache.init(getResources(),w,h);
-                Enemy.setwh(w,h);
-                battleship = new Battleship();
-                timer.subscribe(battleship);
-                water = BitmapFactory.decodeResource(getResources(), R.drawable.water);
-                for (int i=0; i<5; i++){
-                    air.add(new Airplane());
-                    timer.subscribe(air.get(air.size()-1));
-                    sub.add(new Submarine());
-                    timer.subscribe(sub.get(sub.size()-1));
-                }
-
-                for ( Airplane a : air ) {
-                    a.setPosition(w, (float)Math.random()*h/3);
-                }
-                for ( Submarine s : sub ) {
-                    s.setPosition(0, (float)Math.random()*h/3+2*h/3);
-                }
-                water = Bitmap.createScaledBitmap(water,
-                        (int) watersize, (int) watersize, true);
-
-                timer.subscribe(this);
-
+                resetGame();
                 init = true;
             }
             c.drawColor(Color.WHITE);
@@ -210,7 +193,10 @@ public class GameView extends View implements TickListener {
 
 
         }
+
+
         return true;
+
     }
 
     /**
@@ -229,6 +215,32 @@ public class GameView extends View implements TickListener {
             }
         } else {
             timer.setGameover();
+            AlertDialog.Builder eg = new AlertDialog.Builder(getContext());
+            eg.setTitle("Battleship War")
+                    .setMessage("Game Over! Try again?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes!", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            timer.setGameNotover();
+                            air.clear();
+                            sub.clear();
+                            mis.clear();
+                            dech.clear();
+                            countdown = 180;
+                            score = 0;
+                            resetGame();
+                        }
+                    })
+                    .setNegativeButton("No!", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Activity parent = (Activity) getContext();
+                            parent.finish();
+                        }
+                    });
+            AlertDialog box = eg.create();
+            box.show();
         }
 
     }
@@ -265,6 +277,31 @@ public class GameView extends View implements TickListener {
             dech.remove(s);
         }
         traash.clear();
+    }
+
+    public void resetGame() {
+
+        ImageCache.init(getResources(),w,h);
+        Enemy.setwh(w,h);
+        battleship = new Battleship();
+        timer.subscribe(battleship);
+        water = BitmapFactory.decodeResource(getResources(), R.drawable.water);
+        for (int i=0; i<5; i++){
+            air.add(new Airplane());
+            timer.subscribe(air.get(air.size()-1));
+            sub.add(new Submarine());
+            timer.subscribe(sub.get(sub.size()-1));
+        }
+
+        for ( Airplane a : air ) {
+            a.setPosition(w, (float)Math.random()*h/3);
+        }
+        for ( Submarine s : sub ) {
+            s.setPosition(0, (float)Math.random()*h/3+2*h/3);
+        }
+        water = ImageCache.getWaterImage();
+
+        timer.subscribe(this);
     }
 
 }
