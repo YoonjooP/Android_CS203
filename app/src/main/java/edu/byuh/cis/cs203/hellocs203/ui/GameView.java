@@ -14,7 +14,12 @@ import android.os.Message;
 import android.view.MotionEvent;
 import android.view.View;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import edu.byuh.cis.cs203.hellocs203.R;
 import edu.byuh.cis.cs203.hellocs203.system.Airplane;
@@ -214,6 +219,7 @@ public class GameView extends View implements TickListener {
                 timeBefore = timeNow;
             }
         } else {
+            saveScore();
             timer.setGameover();
             AlertDialog.Builder eg = new AlertDialog.Builder(getContext());
             eg.setTitle("Battleship War")
@@ -228,6 +234,7 @@ public class GameView extends View implements TickListener {
                             countdown = 180;
                             score = 0;
                             resetGame();
+//                            loadScore();
 
                     })
                     .setNegativeButton("No!", new DialogInterface.OnClickListener() {
@@ -301,5 +308,29 @@ public class GameView extends View implements TickListener {
 
         timer.subscribe(this);
     }
+
+    public void saveScore(){
+        try {
+            FileOutputStream fos = getContext().openFileOutput("score.txt", Context.MODE_PRIVATE);
+            String scr = ""+ score;
+            fos.write(scr.getBytes());
+            fos.close();
+        } catch (IOException e) {
+            //blissfully ignore
+        }
+    }
+
+    private void loadScore() {
+        try {
+            FileInputStream fis = getContext().openFileInput("score.txt");
+            Scanner s = new Scanner(fis);
+            String lana = s.nextLine();
+            score = Integer.parseInt(lana);
+            s.close();
+        } catch (FileNotFoundException e) {
+            score = 0;
+        }
+    }
+
 
 }
