@@ -32,7 +32,7 @@ public class Timer extends Handler {
         gameover = true;
         }
 
-        public void setGameNotover () { gameover = false;}
+    public void setGameNotover () { gameover = false;}
 
     /**
      * unsubscribe
