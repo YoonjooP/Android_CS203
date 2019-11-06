@@ -219,9 +219,7 @@ public class GameView extends View implements TickListener {
             eg.setTitle("Battleship War")
                     .setMessage("Game Over! Try again?")
                     .setCancelable(false)
-                    .setPositiveButton("Yes!", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
+                    .setPositiveButton("Yes!", (d, i) -> {
                             timer.setGameNotover();
                             air.clear();
                             sub.clear();
@@ -230,7 +228,7 @@ public class GameView extends View implements TickListener {
                             countdown = 180;
                             score = 0;
                             resetGame();
-                        }
+
                     })
                     .setNegativeButton("No!", new DialogInterface.OnClickListener() {
                         @Override
