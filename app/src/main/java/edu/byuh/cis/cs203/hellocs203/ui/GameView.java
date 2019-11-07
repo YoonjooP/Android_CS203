@@ -220,7 +220,7 @@ public class GameView extends View implements TickListener {
                 timeBefore = timeNow;
             }
         } else {
-            saveScore();
+            loadScore();
             timer.setGameover();
             AlertDialog.Builder eg = new AlertDialog.Builder(getContext());
             eg.setTitle("Battleship War")
@@ -266,7 +266,7 @@ public class GameView extends View implements TickListener {
                     });
 
 
-            loadScore();
+
             if (score <= highscore) {
                 AlertDialog box = eg.create();
                 box.show();
@@ -355,9 +355,8 @@ public class GameView extends View implements TickListener {
             Scanner s = new Scanner(fis);
             String lana = s.nextLine();
             int highscore = Integer.parseInt(lana);
-            if (score > highscore) {
+            if (score <= highscore) {
                 score = highscore;
-                saveScore();
             } else {
                 saveScore();
             }
