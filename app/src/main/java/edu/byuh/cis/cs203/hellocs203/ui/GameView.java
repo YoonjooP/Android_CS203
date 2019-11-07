@@ -55,6 +55,7 @@ public class GameView extends View implements TickListener {
     private int score;
     int countdown = 10;
     long timeBefore, timeNow;
+    private int highscore;
 
     /**
      * game view constructor
@@ -234,7 +235,6 @@ public class GameView extends View implements TickListener {
                             countdown = 10;
                             score = 0;
                             resetGame();
-                            loadScore();
                     })
                     .setNegativeButton("No!", new DialogInterface.OnClickListener() {
                         @Override
@@ -243,8 +243,38 @@ public class GameView extends View implements TickListener {
                             parent.finish();
                         }
                     });
-            AlertDialog box = eg.create();
-            box.show();
+            AlertDialog.Builder hs = new AlertDialog.Builder(getContext());
+            hs.setTitle("Battleship War")
+                    .setMessage("Congratulations! A new high score! Play again?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes!", (d, i) -> {
+                        timer.setGameNotover();
+                        air.clear();
+                        sub.clear();
+                        mis.clear();
+                        dech.clear();
+                        countdown = 10;
+                        score = 0;
+                        resetGame();
+                    })
+                    .setNegativeButton("No!", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Activity parent = (Activity) getContext();
+                            parent.finish();
+                        }
+                    });
+
+
+            loadScore();
+            if (score <= highscore) {
+                AlertDialog box = eg.create();
+                box.show();
+            } else {
+                AlertDialog box2 = hs.create();
+                box2.show();
+            }
+
         }
 
     }
@@ -326,7 +356,9 @@ public class GameView extends View implements TickListener {
             String lana = s.nextLine();
             int highscore = Integer.parseInt(lana);
             if (score > highscore) {
-                //annai message
+                score = highscore;
+                saveScore();
+            } else {
                 saveScore();
             }
             s.close();
