@@ -11,9 +11,11 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -71,6 +73,7 @@ public class GameView extends View implements TickListener {
         dech = new ArrayList<>();
         star = new ArrayList<>();
         timer = new Timer();
+        highscore = 0;
 
     }
         @Override
@@ -220,7 +223,6 @@ public class GameView extends View implements TickListener {
                 timeBefore = timeNow;
             }
         } else {
-            loadScore();
             timer.setGameover();
             AlertDialog.Builder eg = new AlertDialog.Builder(getContext());
             eg.setTitle("Battleship War")
@@ -233,7 +235,6 @@ public class GameView extends View implements TickListener {
                             mis.clear();
                             dech.clear();
                             countdown = 10;
-                            score = 0;
                             resetGame();
                     })
                     .setNegativeButton("No!", new DialogInterface.OnClickListener() {
@@ -254,7 +255,7 @@ public class GameView extends View implements TickListener {
                         mis.clear();
                         dech.clear();
                         countdown = 10;
-                        score = 0;
+                        saveScore();
                         resetGame();
                     })
                     .setNegativeButton("No!", new DialogInterface.OnClickListener() {
@@ -266,7 +267,7 @@ public class GameView extends View implements TickListener {
                     });
 
 
-
+            Log.d("High, this:", Integer.toString(highscore) + ", " + Integer.toString(score));
             if (score <= highscore) {
                 AlertDialog box = eg.create();
                 box.show();
@@ -314,7 +315,7 @@ public class GameView extends View implements TickListener {
     }
 
     public void resetGame() {
-
+        loadScore();
         ImageCache.init(getResources(),w,h);
         Enemy.setwh(w,h);
         battleship = new Battleship();
@@ -336,16 +337,18 @@ public class GameView extends View implements TickListener {
         water = ImageCache.getWaterImage();
 
         timer.subscribe(this);
+        score = 0;
     }
 
     public void saveScore(){
         try {
             FileOutputStream fos = getContext().openFileOutput("score.txt", Context.MODE_PRIVATE);
             String scr = ""+ score;
+            Log.d("Writing:", scr);
             fos.write(scr.getBytes());
             fos.close();
         } catch (IOException e) {
-            //blissfully ignore
+            Log.d("File error:", "Writing Error");
         }
     }
 
@@ -354,15 +357,11 @@ public class GameView extends View implements TickListener {
             FileInputStream fis = getContext().openFileInput("score.txt");
             Scanner s = new Scanner(fis);
             String lana = s.nextLine();
-            int highscore = Integer.parseInt(lana);
-            if (score <= highscore) {
-                score = highscore;
-            } else {
-                saveScore();
-            }
+            highscore = Integer.parseInt(lana);
+            Log.d("Read:", Integer.toString(highscore));
             s.close();
         } catch (FileNotFoundException e) {
-            score = 0;
+            Log.d("File error:", "FNFE");
         }
     }
 
