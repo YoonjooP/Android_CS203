@@ -314,6 +314,9 @@ public class GameView extends View implements TickListener {
         traash.clear();
     }
 
+    /**
+     * reset the game
+     */
     public void resetGame() {
         loadScore();
         ImageCache.init(getResources(),w,h);
@@ -340,6 +343,9 @@ public class GameView extends View implements TickListener {
         score = 0;
     }
 
+    /**
+     * save score
+     */
     public void saveScore(){
         try {
             FileOutputStream fos = getContext().openFileOutput("score.txt", Context.MODE_PRIVATE);
@@ -352,6 +358,9 @@ public class GameView extends View implements TickListener {
         }
     }
 
+    /**
+     * load score
+     */
     private void loadScore() {
         try {
             FileInputStream fis = getContext().openFileInput("score.txt");
