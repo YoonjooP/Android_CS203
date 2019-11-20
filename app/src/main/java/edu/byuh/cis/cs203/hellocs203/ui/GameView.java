@@ -68,7 +68,7 @@ public class GameView extends View implements TickListener {
     public GameView (Context c) {
         super(c);
         init = false;
-
+        Enemy.setPreference(PrefActivity.getSpeedPref(getContext()), PrefActivity.getDirPref(getContext()));
         air = new ArrayList<>();
         sub = new ArrayList<>();
         mis = new ArrayList<>();
@@ -374,7 +374,7 @@ public class GameView extends View implements TickListener {
         battleship = new Battleship();
         timer.subscribe(battleship);
         water = BitmapFactory.decodeResource(getResources(), R.drawable.water);
-        for (int i=0; i<5; i++){
+        for (int i=0; i<PrefActivity.getLevelPref(getContext()); i++){
             air.add(new Airplane());
             timer.subscribe(air.get(air.size()-1));
             sub.add(new Submarine());

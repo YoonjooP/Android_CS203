@@ -15,6 +15,8 @@ public abstract class Enemy extends Sprite {
     protected Direction dir;
     boolean exploding;
     protected Size size;
+    protected static String direction;
+    protected static int speed;
 
 
     /**
@@ -86,12 +88,17 @@ public abstract class Enemy extends Sprite {
         } else {
             size = Size.SMALL;
         }
-
-        double rn = Math.random();
-        if (rn < 0.5) {
+        if (direction.equals("left-to-right")) {
             dir = Direction.LEFT_TO_RIGHT;
-        } else {
+        } else if (direction.equals("right-to-left")) {
             dir = Direction.RIGHT_TO_LEFT;
+        } else {
+            double rn = Math.random();
+            if (rn < 0.5) {
+                dir = Direction.LEFT_TO_RIGHT;
+            } else {
+                dir = Direction.RIGHT_TO_LEFT;
+            }
         }
 
         if (dir == Direction.RIGHT_TO_LEFT) {
@@ -119,11 +126,18 @@ public abstract class Enemy extends Sprite {
      */
     public void setRandomSpeed() {
         float v = (float)((Math.random()*15+6) * Math.signum(velocity.x));
-        velocity.set(v, 0);
+        velocity.set(v+(float)speed, 0);
     }
 
     public abstract Bitmap getExplodingImage();
     public abstract int getPointValue();
+
+    public static void setPreference(int i, String s) {
+        direction = s;
+        speed = i;
+    }
+
+
 
 
 }

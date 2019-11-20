@@ -20,8 +20,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.GameActivity"/>
-        <activity android:name=".ui.PrefActivity"/>
+        <activity android:name=".ui.GameActivity"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".ui.PrefActivity"
+            android:screenOrientation="landscape"/>
     </application>
 
 </manifest>
