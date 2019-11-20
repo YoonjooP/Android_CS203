@@ -1,10 +1,12 @@
 package edu.byuh.cis.cs203.hellocs203.ui;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 
 public class PrefActivity extends PreferenceActivity {
@@ -76,4 +78,39 @@ public class PrefActivity extends PreferenceActivity {
 
         setPreferenceScreen(screen);
     }
+
+    public static boolean getMusicPref(Context c) {
+        return PreferenceManager.
+                getDefaultSharedPreferences(c).getBoolean(MUSIC_PREF, true);
+    }
+
+    public static boolean getMissilePref(Context c) {
+        return PreferenceManager.
+                getDefaultSharedPreferences(c).getBoolean(MISSILE_PREF, true);
+    }
+
+    public static boolean getDepthPref(Context c) {
+        return PreferenceManager.
+                getDefaultSharedPreferences(c).getBoolean(DEPTH_PREF, true);
+    }
+
+    public static int getLevelPref(Context c) {
+        String seth = PreferenceManager.
+                getDefaultSharedPreferences(c).getString(NUM_PREF, "50");
+        return Integer.parseInt(seth);
+    }
+
+    public static int getSpeedPref(Context c) {
+        String seth = PreferenceManager.
+                getDefaultSharedPreferences(c).getString(SPEED_PREF, "10");
+        return Integer.parseInt(seth);
+    }
+
+    public static int getDirPref(Context c) {
+        String seth = PreferenceManager.
+                getDefaultSharedPreferences(c).getString(DIR_PREF, "both");
+        return Integer.parseInt(seth);
+    }
+
+
 }
