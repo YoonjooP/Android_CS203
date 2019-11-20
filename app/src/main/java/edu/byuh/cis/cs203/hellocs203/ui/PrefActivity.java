@@ -62,7 +62,7 @@ public class PrefActivity extends PreferenceActivity {
         speed.setSummary("Choose the speed");
         speed.setKey(SPEED_PREF);
         String[] speedlabels = {"Fast", "Medium", "Slow"};
-        String[] speedvalues = {"50", "10", "5"};
+        String[] speedvalues = {"20", "5", "0"};
         speed.setEntries(speedlabels);
         speed.setEntryValues(speedvalues);
         screen.addPreference(speed);
@@ -96,20 +96,20 @@ public class PrefActivity extends PreferenceActivity {
 
     public static int getLevelPref(Context c) {
         String seth = PreferenceManager.
-                getDefaultSharedPreferences(c).getString(NUM_PREF, "50");
+                getDefaultSharedPreferences(c).getString(NUM_PREF, "10");
         return Integer.parseInt(seth);
     }
 
     public static int getSpeedPref(Context c) {
         String seth = PreferenceManager.
-                getDefaultSharedPreferences(c).getString(SPEED_PREF, "10");
+                getDefaultSharedPreferences(c).getString(SPEED_PREF, "5");
         return Integer.parseInt(seth);
     }
 
-    public static int getDirPref(Context c) {
+    public static String getDirPref(Context c) {
         String seth = PreferenceManager.
                 getDefaultSharedPreferences(c).getString(DIR_PREF, "both");
-        return Integer.parseInt(seth);
+        return seth;
     }
 
 

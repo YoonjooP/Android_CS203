@@ -190,20 +190,44 @@ public class GameView extends View implements TickListener {
         float y = m.getY();
         if (m.getAction() == MotionEvent.ACTION_DOWN) {
             if (y>h/2) {
-                dech.add(new DepthCharge());
-                timer.subscribe(dech.get(dech.size()-1));
-                dech.get(dech.size()-1).setPosition(w/2, h/2);
-                depthchargesound.start();
+                if (PrefActivity.getDepthPref(getContext())) {
+                    dech.add(new DepthCharge());
+                    timer.subscribe(dech.get(dech.size()-1));
+                    dech.get(dech.size()-1).setPosition(w/2, h/2);
+                } else {
+                    if (dech.size()<1) {
+                        dech.add(new DepthCharge());
+                        timer.subscribe(dech.get(dech.size()-1));
+                        dech.get(dech.size()-1).setPosition(w/2, h/2);
+                    }
+                }
 
+                if (PrefActivity.getMusicPref(getContext())) {
+                    depthchargesound.start();
+                }
             } else {
                 if (x>w/2){
-                    mis.add(new Missile(Direction.LEFT_TO_RIGHT));
-                    timer.subscribe(mis.get(mis.size()-1));
-                    mis.get(mis.size()-1).setPosition(w/2, h/2);
-                    star.add(new Star(Direction.LEFT_TO_RIGHT));
-                    timer.subscribe(star.get(star.size()-1));
-                    star.get(star.size()-1).setPosition(w/2, h/2);
-                    rightgunsound.start();
+                    if (PrefActivity.getMissilePref(getContext())) {
+                        mis.add(new Missile(Direction.LEFT_TO_RIGHT));
+                        timer.subscribe(mis.get(mis.size()-1));
+                        mis.get(mis.size()-1).setPosition(w/2, h/2);
+                        star.add(new Star(Direction.LEFT_TO_RIGHT));
+                        timer.subscribe(star.get(star.size()-1));
+                        star.get(star.size()-1).setPosition(w/2, h/2);
+                    } else {
+                        if (mis.size()<1) {
+                            mis.add(new Missile(Direction.LEFT_TO_RIGHT));
+                            timer.subscribe(mis.get(mis.size()-1));
+                            mis.get(mis.size()-1).setPosition(w/2, h/2);
+                            star.add(new Star(Direction.LEFT_TO_RIGHT));
+                            timer.subscribe(star.get(star.size()-1));
+                            star.get(star.size()-1).setPosition(w/2, h/2);
+                        }
+                    }
+
+                    if (PrefActivity.getMusicPref(getContext())) {
+                        rightgunsound.start();
+                    }
                 } else {
                     mis.add(new Missile(Direction.RIGHT_TO_LEFT));
                     timer.subscribe(mis.get(mis.size()-1));
@@ -211,7 +235,10 @@ public class GameView extends View implements TickListener {
                     star.add(new Star(Direction.RIGHT_TO_LEFT));
                     timer.subscribe(star.get(star.size()-1));
                     star.get(star.size()-1).setPosition(w/2, h/2);
-                    leftgunsound.start();
+                    if (PrefActivity.getMusicPref(getContext())) {
+                        leftgunsound.start();
+                    }
+
                 }
             }
 
@@ -305,7 +332,10 @@ public class GameView extends View implements TickListener {
                 if (m.overlaps(a)) {
                     score += a.getPointValue();
                     a.explode();
-                    planeexplodesound.start();
+                    if (PrefActivity.getMusicPref(getContext())) {
+                        planeexplodesound.start();
+                    }
+
                     traash.add(m);
 
                 }
@@ -321,7 +351,9 @@ public class GameView extends View implements TickListener {
                 if (d.overlaps(s)){
                     score += s.getPointValue();
                     s.explode();
-                    subexplodesound.start();
+                    if (PrefActivity.getMusicPref(getContext())) {
+                        subexplodesound.start();
+                    }
                     traash.add(d);
                 }
             }
