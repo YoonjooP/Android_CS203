@@ -18,6 +18,11 @@ public class PrefActivity extends PreferenceActivity {
     public static final String SPEED_PREF = "SPEED_PREF";
     public static final String DIR_PREF = "DIR_PREF";
 
+
+    /**
+     * override onCreate
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,33 +84,63 @@ public class PrefActivity extends PreferenceActivity {
         setPreferenceScreen(screen);
     }
 
+    /**
+     * Music Preference
+     * @param c
+     * @return boolean
+     */
     public static boolean getMusicPref(Context c) {
         return PreferenceManager.
                 getDefaultSharedPreferences(c).getBoolean(MUSIC_PREF, true);
     }
 
+    /**
+     * Missile Preference
+     * @param c
+     * @return boolean
+     */
     public static boolean getMissilePref(Context c) {
         return PreferenceManager.
                 getDefaultSharedPreferences(c).getBoolean(MISSILE_PREF, true);
     }
 
+    /**
+     * Depth Charge Preference
+     * @param c
+     * @return boolean
+     */
     public static boolean getDepthPref(Context c) {
         return PreferenceManager.
                 getDefaultSharedPreferences(c).getBoolean(DEPTH_PREF, true);
     }
 
+    /**
+     * Level Preference
+     * @param c
+     * @return int
+     */
     public static int getLevelPref(Context c) {
         String seth = PreferenceManager.
                 getDefaultSharedPreferences(c).getString(NUM_PREF, "10");
         return Integer.parseInt(seth);
     }
 
+    /**
+     * Speed Preference
+     * @param c
+     * @return int
+     */
     public static int getSpeedPref(Context c) {
         String seth = PreferenceManager.
                 getDefaultSharedPreferences(c).getString(SPEED_PREF, "5");
         return Integer.parseInt(seth);
     }
 
+    /**
+     * Direction Preference
+     * @param c
+     * @return String
+     */
     public static String getDirPref(Context c) {
         String seth = PreferenceManager.
                 getDefaultSharedPreferences(c).getString(DIR_PREF, "both");

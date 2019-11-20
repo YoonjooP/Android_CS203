@@ -15,6 +15,10 @@ public class SplashActivity extends Activity {
 
     private ImageView iv;
 
+    /**
+     * override onCreate
+     * @param b
+     */
     @Override
     public void onCreate(Bundle b) {
         super.onCreate(b);
@@ -24,6 +28,11 @@ public class SplashActivity extends Activity {
         setContentView(iv);
     }
 
+    /**
+     * onTouchEvent
+     * @param m
+     * @return
+     */
     @Override
     public boolean onTouchEvent(MotionEvent m) {
         float w = iv.getWidth();
