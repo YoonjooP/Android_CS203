@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
@@ -58,6 +59,7 @@ public class GameView extends View implements TickListener {
     int countdown = 10;
     long timeBefore, timeNow;
     private int highscore;
+    private MediaPlayer depthchargesound, leftgunsound, planeexplodesound, rightgunsound, subexplodesound;
 
     /**
      * game view constructor
@@ -74,6 +76,16 @@ public class GameView extends View implements TickListener {
         star = new ArrayList<>();
         timer = new Timer();
         highscore = 0;
+        depthchargesound = MediaPlayer.create(getContext(),
+                R.raw.depth_charge);
+        leftgunsound = MediaPlayer.create(getContext(),
+                R.raw.left_gun);
+        planeexplodesound = MediaPlayer.create(getContext(),
+                R.raw.plane_explode);
+        rightgunsound = MediaPlayer.create(getContext(),
+                R.raw.right_gun);
+        subexplodesound = MediaPlayer.create(getContext(),
+                R.raw.sub_explode);
 
     }
         @Override
@@ -181,6 +193,7 @@ public class GameView extends View implements TickListener {
                 dech.add(new DepthCharge());
                 timer.subscribe(dech.get(dech.size()-1));
                 dech.get(dech.size()-1).setPosition(w/2, h/2);
+                depthchargesound.start();
 
             } else {
                 if (x>w/2){
@@ -190,6 +203,7 @@ public class GameView extends View implements TickListener {
                     star.add(new Star(Direction.LEFT_TO_RIGHT));
                     timer.subscribe(star.get(star.size()-1));
                     star.get(star.size()-1).setPosition(w/2, h/2);
+                    rightgunsound.start();
                 } else {
                     mis.add(new Missile(Direction.RIGHT_TO_LEFT));
                     timer.subscribe(mis.get(mis.size()-1));
@@ -197,6 +211,7 @@ public class GameView extends View implements TickListener {
                     star.add(new Star(Direction.RIGHT_TO_LEFT));
                     timer.subscribe(star.get(star.size()-1));
                     star.get(star.size()-1).setPosition(w/2, h/2);
+                    leftgunsound.start();
                 }
             }
 
@@ -290,7 +305,9 @@ public class GameView extends View implements TickListener {
                 if (m.overlaps(a)) {
                     score += a.getPointValue();
                     a.explode();
+                    planeexplodesound.start();
                     traash.add(m);
+
                 }
             }
         }
@@ -304,6 +321,7 @@ public class GameView extends View implements TickListener {
                 if (d.overlaps(s)){
                     score += s.getPointValue();
                     s.explode();
+                    subexplodesound.start();
                     traash.add(d);
                 }
             }
