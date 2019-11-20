@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.GameActivity"
+            android:name=".ui.SplashActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
             android:alwaysRetainTaskState="true"
             android:screenOrientation="landscape">
@@ -20,6 +20,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.GameActivity"/>
+        <activity android:name=".ui.PrefActivity"/>
     </application>
 
 </manifest>
