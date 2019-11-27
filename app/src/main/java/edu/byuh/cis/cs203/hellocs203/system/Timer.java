@@ -61,11 +61,17 @@ public class Timer extends Handler {
 
         }
 
-        public void onPause(){
+    /**
+     * on pause
+     */
+    public void onPause(){
             check = false;
 
         }
 
+    /**
+     * on resume
+     */
         public void onResume() {
             check = true;
             sendMessageDelayed(obtainMessage(), 0);

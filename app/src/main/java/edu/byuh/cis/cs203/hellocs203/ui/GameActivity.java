@@ -7,6 +7,10 @@ public class GameActivity extends Activity {
 
     GameView vi;
 
+    /**
+     *on create
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -14,11 +18,17 @@ public class GameActivity extends Activity {
         setContentView(vi);
     }
 
+    /**
+     * on Destroy
+     */
     @Override
     public void onDestroy() {
         super.onDestroy();
     }
 
+    /**
+     * on Pause
+     */
     @Override
     public void onPause() {
         super.onPause();
@@ -26,6 +36,9 @@ public class GameActivity extends Activity {
 
     }
 
+    /**
+     * on resume
+     */
     @Override
     public void onResume() {
         super.onResume();
