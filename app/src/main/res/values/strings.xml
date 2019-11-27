@@ -1,4 +1,32 @@
 <resources>
     <string name="app_name">Hello CS203</string>
     <string name="title_activity_game">GameActivity</string>
+    <string name="score_co">Score :</string>
+    <string name="time_co">Time: </string>
+    <string name="battleship_war_title">Battleship War</string>
+    <string name="game_over_message">Game Over! Try again?</string>
+    <string name="yesyes">Yes!</string>
+    <string name="nono">No!</string>
+    <string name="hurray_message">Congratulations! A new high score! Play again?</string>
+    <string name="sound_effect_title">sound effect</string>
+    <string name="sound_yesyes">Sound will play</string>
+    <string name="sound_nono">Sound will not play</string>
+    <string name="missile_title">Missile option</string>
+    <string name="missile_many">Rapid-fire missiles!</string>
+    <string name="missile_normal">Normal Missile</string>
+    <string name="depth_charge_title">Depth charge option</string>
+    <string name="depth_charge_many">Rapid-fire depth charges!</string>
+    <string name="depth_charge_normal">Normal depth charges</string>
+    <string name="num_of_en">Number of enemies</string>
+    <string name="level_choice">Choose the Level</string>
+    <string name="speed_title">Speed option</string>
+    <string name="choose_speed">Choose the speed</string>
+    <string name="fast">Fast</string>
+    <string name="medium">Medium</string>
+    <string name="slow">Slow</string>
+    <string name="enemy_dir">Enemy Direction</string>
+    <string name="choose_the_dir">Choose the direction</string>
+    <string name="l_to_r">left-to-right</string>
+    <string name="r_to_l">right-to-left</string>
+    <string name="both">both</string>
 </resources>

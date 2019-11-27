@@ -132,12 +132,12 @@ public class GameView extends View implements TickListener {
             Paint p = new Paint();
             p.setColor(Color.BLACK);
             p.setTextSize(70.0F);
-            c.drawText("Score :"+score, 50, h/2+100, p);
+            c.drawText(getResources().getString(R.string.score_co)+score, 50, h/2+100, p);
 
             if (countdown%60 <10) {
-                c.drawText("Time: " + countdown/60 + ":0" + countdown%60, w-400, h/2+100, p);
+                c.drawText(getResources().getString(R.string.time_co) + countdown/60 + ":0" + countdown%60, w-400, h/2+100, p);
             } else {
-                c.drawText("Time: " + countdown/60 + ":" + countdown%60, w-400, h/2+100, p);
+                c.drawText(getResources().getString(R.string.time_co) + countdown/60 + ":" + countdown%60, w-400, h/2+100, p);
             }
 
             trash = new ArrayList<>();
@@ -267,10 +267,10 @@ public class GameView extends View implements TickListener {
         } else {
             timer.setGameover();
             AlertDialog.Builder eg = new AlertDialog.Builder(getContext());
-            eg.setTitle("Battleship War")
-                    .setMessage("Game Over! Try again?")
+            eg.setTitle(R.string.battleship_war_title)
+                    .setMessage(R.string.game_over_message)
                     .setCancelable(false)
-                    .setPositiveButton("Yes!", (d, i) -> {
+                    .setPositiveButton(R.string.yesyes, (d, i) -> {
                             timer.setGameNotover();
                             air.clear();
                             sub.clear();
@@ -279,7 +279,7 @@ public class GameView extends View implements TickListener {
                             countdown = 10;
                             resetGame();
                     })
-                    .setNegativeButton("No!", new DialogInterface.OnClickListener() {
+                    .setNegativeButton(R.string.nono, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             Activity parent = (Activity) getContext();
@@ -287,10 +287,10 @@ public class GameView extends View implements TickListener {
                         }
                     });
             AlertDialog.Builder hs = new AlertDialog.Builder(getContext());
-            hs.setTitle("Battleship War")
-                    .setMessage("Congratulations! A new high score! Play again?")
+            hs.setTitle(R.string.battleship_war_title)
+                    .setMessage(R.string.hurray_message)
                     .setCancelable(false)
-                    .setPositiveButton("Yes!", (d, i) -> {
+                    .setPositiveButton(R.string.yesyes, (d, i) -> {
                         timer.setGameNotover();
                         air.clear();
                         sub.clear();
@@ -300,7 +300,7 @@ public class GameView extends View implements TickListener {
                         saveScore();
                         resetGame();
                     })
-                    .setNegativeButton("No!", new DialogInterface.OnClickListener() {
+                    .setNegativeButton(R.string.nono, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             Activity parent = (Activity) getContext();

@@ -49,8 +49,8 @@ public class SplashActivity extends Activity {
             } else if (aboutButton.contains(x,y)) {
                 Log.d("CS203", "about button!");
                 AlertDialog.Builder eg = new AlertDialog.Builder(iv.getContext());
-                eg.setTitle("Battleship War")
-                        .setMessage("Game Over! Try again?")
+                eg.setTitle(R.string.battleship_war_title)
+                        .setMessage(R.string.game_over_message)
                         .setCancelable(true);
                 AlertDialog box = eg.create();
                 box.show();
