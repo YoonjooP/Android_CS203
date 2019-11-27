@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">안녕 CS203</string>
+    <string name="title_activity_game">게임 엑티비티</string>
+    <string name="score_co">점수: </string>
+    <string name="time_co">시간: </string>
+    <string name="battleship_war_title">전함 전쟁</string>
+    <string name="game_over_message">게임 끝! 다시 할래?</string>
+    <string name="yesyes">웅!</string>
+    <string name="nono">아닝!</string>
+    <string name="hurray_message">축하해! 최고 점수야!! 다시 할래?</string>
+    <string name="sound_effect_title">효과음</string>
+    <string name="sound_yesyes">효과음 예쓰예쓰</string>
+    <string name="sound_nono">효과음 노노</string>
+    <string name="missile_title">미사일 옵션</string>
+    <string name="missile_many">고급 미사일</string>
+    <string name="missile_normal">보통 미사일</string>
+    <string name="depth_charge_title">어뢰 옵션</string>
+    <string name="depth_charge_many">고급 어뢰</string>
+    <string name="depth_charge_normal">보통 어뢰</string>
+    <string name="num_of_en">적의 수</string>
+    <string name="level_choice">레벨을 고르시오.</string>
+    <string name="speed_title">속도 옵션</string>
+    <string name="choose_speed">속도를 고르시오.</string>
+    <string name="fast">빨리빨리</string>
+    <string name="medium">보통</string>
+    <string name="slow">느릿느릿</string>
+    <string name="enemy_dir">적의 방향</string>
+    <string name="choose_the_dir">방향을 고르시오.</string>
+    <string name="l_to_r">왼쪽에서 오른쪽으로</string>
+    <string name="r_to_l">오른쪽에서 왼쪽으로</string>
+    <string name="both">양쪽에서 우다다다</string>
+</resources>
