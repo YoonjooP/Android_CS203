@@ -9,11 +9,12 @@ public class Timer extends Handler {
 
     ArrayList<TickListener> tili;
     boolean gameover;
+    boolean check;
     /**
      * Handler subclass timer
      */
     public Timer () {
-
+        check = true;
         tili = new ArrayList<>();
         gameover = false;
         sendMessageDelayed(obtainMessage(), 0);
@@ -54,7 +55,19 @@ public class Timer extends Handler {
             if (gameover == true) {
                 tili.clear();
             }
-            sendMessageDelayed(obtainMessage(), 50);
+            if (check == true) {
+                sendMessageDelayed(obtainMessage(), 50);
+            }
 
+        }
+
+        public void onPause(){
+            check = false;
+
+        }
+
+        public void onResume() {
+            check = true;
+            sendMessageDelayed(obtainMessage(), 0);
         }
 }

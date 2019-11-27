@@ -29,4 +29,6 @@
     <string name="l_to_r">left-to-right</string>
     <string name="r_to_l">right-to-left</string>
     <string name="both">both</string>
+    <string name="about">About</string>
+    <string name="about_text">Battle ship war! You need to attack enemies!! The more you attack, the more you get the score!</string>
 </resources>

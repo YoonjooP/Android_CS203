@@ -424,5 +424,13 @@ public class GameView extends View implements TickListener {
         }
     }
 
+    public void onPause() {
+        timer.onPause();
+    }
+
+    public void onResume() {
+        timer.onResume();
+    }
+
 
 }
