@@ -22,7 +22,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import edu.byuh.cis.cs203.hellocs203.R;
 import edu.byuh.cis.cs203.hellocs203.system.Airplane;
@@ -140,8 +142,6 @@ public class GameView extends View implements TickListener {
                 c.drawText(getResources().getString(R.string.time_co) + countdown/60 + ":" + countdown%60, w-400, h/2+100, p);
             }
 
-            trash = new ArrayList<>();
-            trashh = new ArrayList<>();
             trashhh = new ArrayList<>();
             for (Star st : star) {
                 if (st.getIsdraw() == true) {
@@ -153,28 +153,15 @@ public class GameView extends View implements TickListener {
                 star.remove(st);
             }
 
-            for (DepthCharge de : dech ) {
-                if (de.getPos().top>h){
-                    trash.add(de);
-                    timer.unsubscribe(de);
-                }
-            }
-            for (DepthCharge de: trash) {
-                dech.remove(de);
-            }
-            for (Missile mi : mis ) {
-                if (mi.getPos().bottom<0) {
-                    trashh.add(mi);
-                    timer.unsubscribe(mi);
-                }
-            }
-            for (Missile mi : trashh) {
-                mis.remove(mi);
-            }
-
-            trash.clear();
-            trashh.clear();
             trashhh.clear();
+
+            List<Missile> doomed = mis.stream().filter(t -> t.getPos().bottom <0).collect(Collectors.toList());
+            doomed.forEach(m->timer.unsubscribe(m));
+            mis.removeIf(m->m.getPos().bottom<0);
+
+            List<DepthCharge> dooomed = dech.stream().filter(t -> t.getPos().bottom <0).collect(Collectors.toList());
+            dooomed.forEach(m->timer.unsubscribe(m));
+            dech.removeIf(m->m.getPos().bottom<0);
 
         }
 
@@ -371,7 +358,7 @@ public class GameView extends View implements TickListener {
         loadScore();
         ImageCache.init(getResources(),w,h);
         Enemy.setwh(w,h);
-        battleship = new Battleship();
+        battleship = Battleship.getInstance();
         timer.subscribe(battleship);
         water = BitmapFactory.decodeResource(getResources(), R.drawable.water);
         for (int i=0; i<PrefActivity.getLevelPref(getContext()); i++){

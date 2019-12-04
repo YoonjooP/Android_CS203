@@ -7,10 +7,13 @@ import edu.byuh.cis.cs203.hellocs203.R;
 
 
 public class Battleship extends Sprite {
+
+    private static Battleship battleship;
+
     /**
      * battleship
      */
-    public Battleship() {
+    private Battleship() {
         super();
         bitmap = ImageCache.getBattleshipImage();
         pos.set(0,0,bitmap.getWidth(),bitmap.getHeight());
@@ -23,5 +26,14 @@ public class Battleship extends Sprite {
     @Override
     public void tick() {
         move();
+    }
+
+
+    public static Battleship getInstance() {
+        if (battleship == null) {
+            battleship = new Battleship();
+        }
+
+        return battleship;
     }
 }
