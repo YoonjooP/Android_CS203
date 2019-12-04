@@ -21,6 +21,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -384,12 +385,10 @@ public class GameView extends View implements TickListener {
      * save score
      */
     public void saveScore(){
-        try {
-            FileOutputStream fos = getContext().openFileOutput("score.txt", Context.MODE_PRIVATE);
+        try (OutputStream os = getContext().openFileOutput("score.txt", Context.MODE_PRIVATE)){
             String scr = ""+ score;
             Log.d("Writing:", scr);
-            fos.write(scr.getBytes());
-            fos.close();
+            os.write(scr.getBytes());
         } catch (IOException e) {
             Log.d("File error:", "Writing Error");
         }
